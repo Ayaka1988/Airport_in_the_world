@@ -1,24 +1,34 @@
-# README
+# Airport in the world
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##このサイトについて
+* サイト名：Airport in the world
+* サイト概要：世界中の空港の情報をまとめた情報投稿型コミュニティサイト。
+　　　　　　　以前バックパッカーとして世界を旅する中で、空港を多用していた経験から、
+　　　　　　　世界の空港の概要をまとめた情報が欲しいと考えていたことから考案。
+　　　　　　　様々なユーザーが空港の情報を投稿できる。
+* ターゲットユーザー：世界中を旅するバックパッカー
+* サイトの目的：世界中の空港の情報を集約させることで、
+　　　　　　　　旅人が旅をしやすくなることに貢献する。
 
-Things you may want to cover:
 
-* Ruby version
+##使用しているフレームワーク
+* Ruby version:
 
-* System dependencies
+##実装した機能
+* ユーザー/管理者登録機能、投稿機能、ジャンル検索機能、ワード検索機能、
+　コメント機能、ブックマーク機能
 
-* Configuration
+##使用方法
+* 空港情報の投稿、コメント投稿以外はログインなしで閲覧可能。
+　自身がなにか投稿するときはログインが必要。
+* エリア別一覧、国別一覧から閲覧したい国を選択できる。
+* 各ユーザーが知っている空港の情報を投稿できる
+* その投稿に対して、新しい情報などを別のユーザーがコメントすることができる。
 
-* Database creation
+##設計書
+* ER図URL：
+* テーブル定義書
+* 設計書
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##作者
+* 寺田彩可
