@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+  <li>
+    Welcome ✈ <%= current_user.name %>さん
+  </li>
+<% end %>
+
+    <!--ログイン済な場合-->
+    <% if user_signed_in? %>
+      <li> <!--マイページへ-->
+        <%= link_to customers_mypage_path,class: 'btn' do%>
+      </li>
+

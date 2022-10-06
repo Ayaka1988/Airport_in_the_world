@@ -23,6 +23,7 @@ class Public::SessionsController < Devise::SessionsController
   def user_state
     #入力されたemailからアカウント１件取得
     @user = User.find_by(email: params[:user][:email])
+    if @user
 
     #アカウントを取得できなかった場合、このメソッド終了
     return if !@user
