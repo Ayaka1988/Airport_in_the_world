@@ -1,12 +1,67 @@
-<% if user_signed_in? %>
-  <li>
-    Welcome ✈ <%= current_user.name %>さん
-  </li>
-<% end %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">
 
-    <!--ログイン済な場合-->
+
+    <% if user_signed_in? %>
+      <li>
+        Welcome ✈ <%= current_user.name %>さん
+      </li>
+    <% end %>
+
+    <!--userがログインしている場合-->
     <% if user_signed_in? %>
       <li> <!--マイページへ-->
-        <%= link_to customers_mypage_path,class: 'btn' do%>
+        <%= link_to user_mypage_path(current_user.id), "nav-link text-light" do %>
+          <i class="fa-regular fa-tickets-airline"></i> My Page
+        <% end %>
       </li>
+      <li> <!--contactページへ-->
+        <%= link_to new_contact_path(user_id: current_user.id), class: 'nav-link text-light' do %>
+          <i class="fa-regular fa-envelope"></i> Contact
+        <% end %>
+      </li>
+      <li> <!--logout-->
+        <%= link_to world_path, method: :delete, class:"nav-link text-light" do %>
+          <i class="fa-regular fa-plane-departure"></i> Take off
+        <% end %>
+      </li>
+
+    <!--admin側のheader-->
+    <% elsif admin_signed_in? %>
+      <li> <!--user一覧-->
+        <%= link_to admin_users_path,class: 'btn' do %>
+            user一覧
+        <% end %>
+      </li>
+      <li> <!--ジャンル一覧-->
+        <%= link_to admin_genres_path,class: 'btn' do%>
+            ジャンル一覧
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_admin_session_path, method: :delete,class: 'btn' do%>
+            ログアウト
+        <% end %>
+      </li>
+
+    <!--userがログインしていない場合-->
+    <% else %>
+      <li> <!--Aboutページ-->
+        <%= link_to  about_path, class: 'nav-link text-light' do %>
+          <i class="fa-regular fa-plane-circle-check"></i> About
+        <% end %>
+      </li>
+      <li> <!--contactページへ-->
+        <%= link_to new_contact_path(user_id: current_user.id), class: 'nav-link text-light' do %>
+          <i class="fa-regular fa-envelope"></i> Contact
+        <% end %>
+      </li>
+      <li> <!--login-->
+        <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+          <i class="fa-regular fa-plane-arrival"></i> Login
+        <% end %>
+      </li>
+    <% end %>
+
 

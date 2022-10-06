@@ -7,6 +7,7 @@ class Public::HomesController < ApplicationController
   end
 
   def world
+    @parents = Genre.all.order("id ASC").limit(7) #1層目7項目=> limit(7)
   end
 
 

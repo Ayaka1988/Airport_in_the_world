@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_05_121210) do
+ActiveRecord::Schema.define(version: 2022_10_06_070956) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(version: 2022_10_05_121210) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "content", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "data_pages", force: :cascade do |t|
     t.text "data"
     t.datetime "created_at", precision: 6, null: false
@@ -86,6 +93,7 @@ ActiveRecord::Schema.define(version: 2022_10_05_121210) do
   create_table "posts", force: :cascade do |t|
     t.string "airport_name", null: false
     t.integer "genre_id", null: false
+    t.integer "user_id", null: false
     t.string "open_hour"
     t.text "sleep_space"
     t.string "url"

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'contacts/new'
+    get 'contacts/create'
+  end
 resources :data_pages
 
 #admin側のルーティング
@@ -16,6 +20,7 @@ scope module: :public do
   root to: 'homes#top'
   get '/about' => "homes#about"
   get '/world' => "homes#world"
+  resources :contacts, only: [:new, :create]
   resources :posts ,only: [:new, :create, :index, :show, :destroy, :update] do
     resources :comments, only: [:create, :destroy]
     resource :bookmarks, only: [:create, :destroy]
