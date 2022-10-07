@@ -3,6 +3,7 @@ class Admin::GenresController < ApplicationController
   def index
     @genre = Genre.new
     @genres = Genre.all
+    @parents = Genre.where(ancestry: nil)
   end
 
   def create

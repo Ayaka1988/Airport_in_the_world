@@ -19,7 +19,7 @@ end
 scope module: :public do
   root to: 'homes#top'
   get '/about' => "homes#about"
-  get '/world' => "homes#world"
+  resources :genres
   resources :contacts, only: [:new, :create]
   resources :posts ,only: [:new, :create, :index, :show, :destroy, :update] do
     resources :comments, only: [:create, :destroy]

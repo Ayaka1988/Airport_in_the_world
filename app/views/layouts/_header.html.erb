@@ -1,67 +1,77 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="/"></a>
+      <%= link_to genres_path, style:"font-size: 40px;" do %>
+        <i class="fas fa-globe-americas"></i>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li>
+              Welcome ✈ <%= current_user.name %>さん
+            </li>
+          <% end %>
+
+          <!--userがログインしている場合-->
+          <% if user_signed_in? %>
+            <li> <!--マイページへ-->
+              <%= link_to user_mypage_path(current_user.id), "nav-link text-light" do %>
+                <i class="fas fa-passport"></i> My Page
+              <% end %>
+            </li>
+            <li> <!--logout-->
+              <%= link_to genres_path, method: :delete, class:"nav-link text-light" do %>
+                <i class="fas fa-plane-departure"></i> Take off
+              <% end %>
+            </li>
+            <li> <!--contactページへ-->
+              <!--<%#= link_to new_contact_path(user_id: current_user.id), class: 'nav-link text-light' do %>-->
+                <i class="fa-regular fa-envelope"></i> Contact
+              <!--<%# end %>-->
+            </li>
 
 
-    <% if user_signed_in? %>
-      <li>
-        Welcome ✈ <%= current_user.name %>さん
-      </li>
-    <% end %>
+          <!--admin側のheader-->
+          <% elsif admin_signed_in? %>
+            <li> <!--user一覧-->
+              <%= link_to admin_users_path,class: 'btn' do %>
+                  user一覧
+              <% end %>
+            </li>
+            <li> <!--ジャンル一覧-->
+              <%= link_to admin_genres_path,class: 'btn' do%>
+                  ジャンル一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete,class: 'btn' do%>
+                  ログアウト
+              <% end %>
+            </li>
 
-    <!--userがログインしている場合-->
-    <% if user_signed_in? %>
-      <li> <!--マイページへ-->
-        <%= link_to user_mypage_path(current_user.id), "nav-link text-light" do %>
-          <i class="fa-regular fa-tickets-airline"></i> My Page
-        <% end %>
-      </li>
-      <li> <!--contactページへ-->
-        <%= link_to new_contact_path(user_id: current_user.id), class: 'nav-link text-light' do %>
-          <i class="fa-regular fa-envelope"></i> Contact
-        <% end %>
-      </li>
-      <li> <!--logout-->
-        <%= link_to world_path, method: :delete, class:"nav-link text-light" do %>
-          <i class="fa-regular fa-plane-departure"></i> Take off
-        <% end %>
-      </li>
-
-    <!--admin側のheader-->
-    <% elsif admin_signed_in? %>
-      <li> <!--user一覧-->
-        <%= link_to admin_users_path,class: 'btn' do %>
-            user一覧
-        <% end %>
-      </li>
-      <li> <!--ジャンル一覧-->
-        <%= link_to admin_genres_path,class: 'btn' do%>
-            ジャンル一覧
-        <% end %>
-      </li>
-      <li>
-        <%= link_to destroy_admin_session_path, method: :delete,class: 'btn' do%>
-            ログアウト
-        <% end %>
-      </li>
-
-    <!--userがログインしていない場合-->
-    <% else %>
-      <li> <!--Aboutページ-->
-        <%= link_to  about_path, class: 'nav-link text-light' do %>
-          <i class="fa-regular fa-plane-circle-check"></i> About
-        <% end %>
-      </li>
-      <li> <!--contactページへ-->
-        <%= link_to new_contact_path(user_id: current_user.id), class: 'nav-link text-light' do %>
-          <i class="fa-regular fa-envelope"></i> Contact
-        <% end %>
-      </li>
-      <li> <!--login-->
-        <%= link_to new_user_session_path, class:"nav-link text-light" do %>
-          <i class="fa-regular fa-plane-arrival"></i> Login
-        <% end %>
-      </li>
-    <% end %>
-
+          <!--userがログインしていない場合-->
+          <% else %>
+            <li> <!--Aboutページ-->
+              <%= link_to  about_path, class: 'nav-link text-light' do %>
+                About <i class="fas fa-suitcase-rolling"></i>
+              <% end %>
+            </li>
+            <li> <!--login-->
+              <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+                Login <i class="fas fa-plane-arrival"></i>
+              <% end %>
+            </li>
+            <li> <!--contactページへ-->
+              <!--<%#= link_to new_contact_path(user_id: current_user.id), class: 'nav-link text-light' do %>-->
+                Contact <i class="fa-regular fa-envelope"></i>
+              <!--<%# end %>-->
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
