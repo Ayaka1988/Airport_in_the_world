@@ -18,13 +18,13 @@
           <!--userがログインしている場合-->
           <% if user_signed_in? %>
             <li> <!--マイページへ-->
-              <%= link_to user_mypage_path(current_user.id), "nav-link text-light" do %>
+              <!--<%#= link_to user_mypage_path(current_user.id), "nav-link text-light" do %>-->
                 <i class="fas fa-passport"></i> My Page
-              <% end %>
+              <!--<%# end %>-->
             </li>
             <li> <!--logout-->
               <%= link_to genres_path, method: :delete, class:"nav-link text-light" do %>
-                <i class="fas fa-plane-departure"></i> Take off
+                Take off<i class="fas fa-plane-departure"></i>
               <% end %>
             </li>
             <li> <!--contactページへ-->
@@ -48,7 +48,7 @@
             </li>
             <li>
               <%= link_to destroy_admin_session_path, method: :delete,class: 'btn' do%>
-                  ログアウト
+                  <!--ログアウト-->
               <% end %>
             </li>
 

@@ -6,11 +6,6 @@ class Public::HomesController < ApplicationController
   def about
   end
 
-  def world
-    @parents = Genre.where(ancestry: nil)
-    @parents = Genre.all.order("id ASC").limit(7) #1層目7項目=> limit(7)
-  end
-
 
   def unsubscribe #退会画面
     @user = current_user

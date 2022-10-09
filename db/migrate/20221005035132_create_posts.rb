@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :user_id, null: false
       t.string :open_hour
       t.text :sleep_space
+      t.string :security
       t.string :url
       t.text :others
 

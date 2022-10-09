@@ -1,34 +1,25 @@
-<h2>世界地図とジャンル載せる</h2>
-%h1 カテゴリー一覧
-%ul.genres
-  - @parents.each do |parent|
-    %li.parents= link_to "#{parent.name}", genre_path(parent)
-
-    %ul.genres__children
-      - parent.children.each do |child|
-        %li.childern= link_to "#{child.name}", genre_path(child)
-
-        %ul.genres__grandchildren
-          - child.children.each do |grandchild|
-            %li= link_to "#{grandchild.name}", genre_path(grandchild)
-
-
-<!--親要素-->
-
-  <!--<ul class="genres">-->
-  <!--  <%#- @parents.each do |parent| %>-->
-  <!--  <li>-->
-  <!--    <%#= parents= link_to "#{parent.name}", genre_path(parent) %>-->
-  <!--  </li>-->
-
-
-    <!--子要素-->
-  <!--  <%#- parent.children.each do |child| %>-->
-  <!--    <%#= child.name %>-->
-
-      <!--孫要素-->
-  <!--    <%#- child.children.each do |gc| %>-->
-  <!--      <%#= gc.name %>-->
-  <!--    <%# end %>-->
-  <!--  <%# end %>-->
-  <!--<%# end %>-->
+<!--<div class="container mt-5">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-3">-->
+      <h2>世界地図とジャンル載せる</h2>
+          <ul class="genres">
+            <% @parents.each do |parent| %>
+            <li class="parents">
+              <%= link_to "#{parent.name}", genre_path(parent) %>
+            </li>
+            <ul class="genres__children">
+              <% parent.children.each do |child| %>
+              <li class="childern">
+                <%= link_to "#{child.name}", genre_path(child) %>
+              </li>
+              <ul class="genres__grandchildren">
+                <% child.children.each do |grandchild| %>
+                <li class="gc">
+                  <%= link_to "#{grandchild.name}", genre_path(grandchild) %>
+                </li>
+                <% end %>
+              </ul>
+              <% end %>
+            </ul>
+            <% end %>
+          </ul>

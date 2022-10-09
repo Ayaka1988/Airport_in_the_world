@@ -62,3 +62,6 @@ gem 'devise'
 gem 'ancestry'
 
 gem 'kaminari'
+
+gem 'jquery-rails'
+
