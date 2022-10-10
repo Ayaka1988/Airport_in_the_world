@@ -11,6 +11,7 @@ class PostGenre < ApplicationRecord
       PostGenre.create(post_id: post.id, genre_id: genre.id)
     end
 
+
     if children_id.present? && children_id != '---'
       genre = Genre.find(children_id)
       PostGenre.create(post_id: post.id, genre_id: genre.id)

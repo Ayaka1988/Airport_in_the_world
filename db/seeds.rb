@@ -1,6 +1,6 @@
 area = Genre.create(:name => 'world')
 
-#親要素作成
+#子要素作成
 area_asia = area.children.create(:name => 'アジア')
 area_europe = area.children.create(:name => 'ヨーロッパ')
 area_north_america = area.children.create(:name => '北米')
@@ -9,7 +9,7 @@ area_oceania = area.children.create(:name => 'オセアニア')
 area_middle_east = area.children.create(:name => '中東')
 area_africa = area.children.create(:name => 'アフリカ')
 
-#子要素作成
+#孫要素作成
 #アジアの子要素
 area_asia.children.create([{:name => 'インド'}, {:name => 'インドネシア'}, {:name => 'ウズベキスタン'}, {:name => 'カザフスタン'},
                            {:name => '韓国'}, {:name => 'カンボジア'}, {:name => 'キルギス'}, {:name => 'シンガポール'}, {:name => 'スリランカ'},

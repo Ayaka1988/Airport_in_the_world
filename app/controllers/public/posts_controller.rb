@@ -13,16 +13,27 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path
     else
       @posts = Post.all
-      @genre_parent_array = Genre.genre_parent_array_create
+      # @genre_parent_array = Genre.genre_parent_array_create
       render 'index'
     end
+  end
+
+  def new
+  end
+
+  def edit
+  end
+
+  def update
   end
 
   def index
     # byebug
     @post = Post.new
     @posts = Post.all
-    @genre_parent_array = Genre.genre_parent_array_create
+    @genre = Genre.all
+
+    # @genre_parent_array = Genre.genre_parent_array_create
   end
 
   #選択された親カテゴリーに紐付く子カテゴリーを抽出

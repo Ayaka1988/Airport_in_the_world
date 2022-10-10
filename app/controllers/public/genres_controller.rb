@@ -1,6 +1,6 @@
 class Public::GenresController < ApplicationController
   def index
-    # @parents = Genre.all.order("id ASC").limit(7) #1層目7項目=> limit(7)
+    
     @parents = Genre.where(ancestry: nil)
   end
 
