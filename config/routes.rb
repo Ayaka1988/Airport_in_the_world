@@ -44,17 +44,7 @@ Rails.application.routes.draw do
     #中間テーブル
     get 'get_genre/children', to: 'posts#get_genre_children', defaults: { format: 'json' }
     get 'get_genre/grandchildren', to: 'posts#get_genre_grandchildren', defaults: { format: 'json' }
-
-    #contact
-    get 'contacts/new'
-    get 'contacts/create'
-    resources :data_pages
   end
-
-
-
-
-
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
