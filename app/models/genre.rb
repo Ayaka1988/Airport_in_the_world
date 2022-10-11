@@ -1,8 +1,8 @@
 class Genre < ApplicationRecord
   #ancestryを有効にする
   has_ancestry
-  has_many :post_genres
-  has_many :posts, through: :post_genres
+  # has_many :post_genres
+  has_many :posts
 
   def self.genre_parent_array_create
     #親カテゴリーのセレクトボックスを作成→初期値格納

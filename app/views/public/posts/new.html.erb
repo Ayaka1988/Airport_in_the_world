@@ -1,45 +1,94 @@
+<div class="container">
+  <%= form_with model: @post, local: true do |f| %>
+    <!--user名反映させる-->
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= label_tag 'エリア選択' %>
+        <br>
+        <%#= collection_select :area, :genre_ids, @genres, :id, :name, prompt: "選択してください", class: 'form-control' %>
+        <select id="area_genre_ids" class="form-control">
+          <option value="">選択してください</option>
+          <% @genres.each do |genre| %>
+            <option value="<%= genre.id %>"><%= genre.name %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <%= label_tag '国選択' %>
+        <p id="message" class="d-block">エリアを選択してください</p>
+        <select class="d-none form-control" name="post[genre_id]" id="post_genre_id"></select>
+      </div>
+    </div>
+    <br>
+    <%= f.label :airport_name,'空港名' %>
+    <br>
+    <%= f.text_field :airport_name, class:'form-control' %>
+    <br>
+    <%= f.label :open_hour,'営業時間' %>
+    <br>
+    <%= f.text_field :open_hour, class:'form-control' %>
+    <br>
+
+    <%= f.label :sleep_space, '仮眠スペース' %>
+    <br>
+    <%= f.text_area :sleep_space, class:'form-control' %>
+    <br>
+
+    <%= f.label :security,'治安' %>
+    <br>
+    <%= f.text_field :security, class:'form-control' %>
+    <br>
+
+    <%= f.label :url,'URL' %>
+    <br>
+    <%= f.text_field :url, class:'form-control' %>
+    <br>
+
+    <%= f.label :others, 'その他' %>
+    <br>
+    <%= f.text_area :others, class:'form-control' %>
+    <br>
+
+    <%= f.submit 'Have a safe flight !', class: 'btn btn-primary btn-block' %>
+  <% end %>
 
 
+</div>
 
+<script>
+ $(document).ready(function() {
+  $('#area_genre_ids').change(function() {
 
+   let area_id = $(this).val(); // 自分自身のvalを取得する
 
+   // area_idが選択されていなかったら孫セレクトボックスを消して処理中断
+   if (area_id === '') {
+     $('#message').addClass('d-block').removeClass('d-none');
+     $('#post_genre_id').addClass('d-none');
+     return false;
+   }
 
+   $.ajax('/get_genre/grandchildren', {
+     type: 'get',
+     data: {children_id: area_id},
+     dataType: 'json'
+   })
+   // 取得に成功
+   .done(function(countries) {
+     $('#message').removeClass('d-block').addClass('d-none');
+     $('#post_genre_id').removeClass('d-none'); // エリアが選ばれたらセレクトボックス出現
+     $('#post_genre_id > option').remove(); // 一旦孫のセレクトボックスをクリア
+     // 孫セレクトボックスに国名を順次ループで追加
+     countries.forEach(function(country) {
+       $('#post_genre_id').append($('<option>').html(country.name).val(country.id))
+     })
+   })
+   // 取得に失敗
+   .fail(function() {
+     alert('通信に失敗しました。時間をおいてサイド実行してください。');
+   })
 
-
-
-<!--<%#= form_with model: @post, local: true do |f| %>-->
-  <!--user名反映させる-->
-
-<!--  <%#= f.label :title,'空港名' %>-->
-<!--  <br>-->
-<!--  <%#= f.text_field :airport_name, class:'form-control' %>-->
-<!--  <br>-->
-<!--  <%#= f.label :title,'営業時間' %>-->
-<!--  <br>-->
-<!--  <%#= f.text_field :open_hour, class:'form-control' %>-->
-<!--  <br>-->
-
-<!--  <%#= f.label :body, '仮眠スペース' %>-->
-<!--  <br>-->
-<!--  <%#= f.text_area :body, class:'form-control' %>-->
-<!--  <br>-->
-
-<!--  <%#= f.label :title,'治安' %>-->
-<!--  <br>-->
-<!--  <%#= f.text_field :security, class:'form-control' %>-->
-<!--  <br>-->
-
-<!--  <%#= f.label :title,'URL' %>-->
-<!--  <br>-->
-<!--  <%#= f.text_field :url, class:'form-control' %>-->
-<!--  <br>-->
-
-<!--  <%#= f.label :body, 'その他' %>-->
-<!--  <br>-->
-<!--  <%#= f.text_area :others, class:'form-control' %>-->
-<!--  <br>-->
-
-<!--  <%#= f.submit 'Have a safe flight !', class: 'btn btn-primary btn-block' %>-->
-<!--<%# end %>-->
-
- 
+  })
+ })
+</script>

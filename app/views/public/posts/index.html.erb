@@ -1,56 +1,7 @@
- <div class="category-form">
-  <%= label_tag 'Select' %>
-   <%#= f.select 'parent_id', options_for_select(@genre_parent_array), id: 'parent-genre', class: 'form-control' %>
-   <%#= select_tag 'parent_id', options_for_select(@genre_parent_array), id: 'parent-genre', class: 'form-control' %>
-    <%= collection_select(:post, :genre_ids, Genre.all, :id, :name) do |children| %>
-    <% end %>
-    <%= @genre %>
+<div class="container">
+ <% @posts.each do |post| %>
+  <div>
+   <%= post.genre.parent.name %> > <%= post.genre.name %>
   </div>
-
-  <% @post.genres.each do |genre| %>
-    <%= genre.name %>
-    <%= label_tag 'ジャンル' %>
-    <%#= select_tag 'parent_id', options_for_select(@genre_parent_array), id: 'parent-genre', class: 'form-control' %>
-  <% end %>
-
- <!---->
-  <!--<%#= cb.label { cb.check_box + ' ' + cb.text } %>-->
-  <!--<br>-->
-  <!--<%# end %>-->
-
-
-
-
-
-
-
-
-
-
-
-
- <!--.col-xs-9-->
-  <!--  table.table-->
-  <!--    thead-->
-  <!--      tr-->
-  <!--        th-->
-  <!--          | 投稿者-->
-  <!--        th-->
-  <!--          | タイトル-->
-  <!--        th-->
-  <!--          | 本文-->
-  <!--        th-->
-
-  <!--    tbody.new_book-->
-  <!--      - @books.each do |book|-->
-  <!--        tr-->
-  <!--          td-->
-  <!--            = link_to book.user  do-->
-  <!--              = book.user.name-->
-  <!--          td-->
-  <!--            = link_to book.title, book_path(book)-->
-  <!--          td-->
-  <!--            = book.body-->
-  <!--          td-->
-  <!--            -if book.user == current_user-->
-  <!--              = link_to '削除', book, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-sm btn-danger'-->
+ <% end %>
+</div>
