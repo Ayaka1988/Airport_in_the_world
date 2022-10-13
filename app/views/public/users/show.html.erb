@@ -1,1 +1,48 @@
-<h2>とりあえずユーザーページの代わり</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <h3 class="my-4 mt-5">︎マイページ✈︎︎</h3>
+
+      <table class="table table-hover">
+        <thead>
+          <th>登録情報</th>
+          <th><%= link_to '編集する', mypage_edit_path, class: "btn btn-sm btn-info" %></th>
+        </thead>
+        <tbody>
+          <tr>
+        	  <th>会員ID</th>
+        	  <th><%= @user.id %></th>
+          </tr>
+          <tr>
+        	  <th>ユーザー名</th>
+        	  <th><%= @user.name %></th>
+          </tr>
+          <tr>
+        	  <th>メールアドレス</th>
+        	  <th><%= @user.email %></th>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>
+            <%= @user.name %>さんの投稿一覧
+            <%#= link_to '一覧を見る', _path, class: "btn btn-sm btn-primary" %>
+            <br>
+            <br>
+            <%= @user.name %>さんのブックマーク一覧
+            <%#= link_to '一覧を見る', _path, class: "btn btn-sm btn-primary" %>
+            </th>
+          </tr>
+          <tr>
+            <th><%= link_to "退会する" , unsubscribe_path, class: 'btn btn-danger' %></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+

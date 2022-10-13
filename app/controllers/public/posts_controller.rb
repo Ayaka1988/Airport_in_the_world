@@ -17,22 +17,7 @@ class Public::PostsController < ApplicationController
     @genres = Genre.find_by(ancestry: nil).children
     # grandchild_genre = @post.genre
     # child_genre = grandchild_genre.parent
-    # @genre_parent_array = []
-    # Genre.where(ancestry: nil).each do |parent|
-    #   @genre_parent_array << parent.name
-    # end
-
-    # @genre_children_array = []
-    # Genre.where(ancestry: child_genre.ancestry).each do |children|
-    #   @genre_children_array << children
-    # end
-
-    # @genre_grandchildren_array = []
-    # Genre.where(ancestry: grandchild_genre.ancestry).each do |grandchildren|
-    #   @genre_grandchildren_array << grandchildren
-    # end
   end
-
 
   def edit
   end
@@ -44,9 +29,7 @@ class Public::PostsController < ApplicationController
     @posts = Post.all
     # # byebug
     # @post = Post.new
-    # @posts = Post.all
-    # @genres = Genre.find_by(ancestry: nil).children
-    # @genre_parent_array = Genre.genre_parent_array_create
+    # @genres = Genre.find_by(ancestry: nil).childrennd
   end
 
   #選択された親カテゴリーに紐付く子カテゴリーを抽出
@@ -60,13 +43,13 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @posts.destroy
-    redirect_to posts_path
+    redirect_to root_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:airport_name, :open_hour, :sleep_space, :security, :url, :others, :genre_id).merge(user_id: current_user.id)
+    params.require(:post).permit(:airport_name, :open_hour, :sleep_space, :security, :url, :others, :genre_id, :image).merge(user_id: current_user.id)
   end
 
 end

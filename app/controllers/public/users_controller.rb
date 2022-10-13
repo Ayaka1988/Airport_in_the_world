@@ -7,10 +7,11 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @user = current_user.id
-    @posts = current_user.posts
+  #   @user = User.find(params[:id])
+    @user = current_user
+    # @posts = current_user.posts
   end
+
 
   def edit
     @user = User.find(params[:id])
@@ -28,25 +29,28 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
       redirect_to user_mypage_path(current_user)
-    render :edit
+    else
+    render "edit"
     end
   end
 
   def unsubscribe
+    @user = current_user
   end
 
+  #退会処理
   def withdrawal
-    @user = current_user
-    @user.update(is_valid: false)
+    @user = User.find(params[:id])
+    @user.update(is_valid: false) #falseにすることで退会済に変更
     reset_session
     flash[:notice] = "退会処理を行いました"
-    redirect_to world_path
+    redirect_to root_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :address, )
+    params.require(:user).permit(:email, :name)
   end
 end
 
