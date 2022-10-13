@@ -1,7 +1,8 @@
 <!--部分テンプレート挿入-->
+<%= link_to 'test', area_index_path(area_id: 2) %>
 <div class="container">
  <% @posts.each do |post| %>
-  <h2><%= post.genre.name %>の空港</h2>
+  <h4><%= post.genre.name %>の空港</h>
    <table class="table table-hover table-inverse">
     <tr>
      <td class="table-img">
@@ -12,8 +13,11 @@
       <% end %>
      </td>
      <td class="table-txt">
-      空港名：<%= post.airport_name %><br>
-      カテゴリー：<%= post.genre.parent.name %> <%= post.genre.name %><br>
+      空港名：
+      <%= link_to post_path(post) do %>
+      <%= post.airport_name %>
+      <% end %><br>
+      カテゴリー：<%= post.genre.parent.name %>>✈︎><%= post.genre.name %><br>
       ユーザー名：<%= post.user.name %>
      </td>
    </table>

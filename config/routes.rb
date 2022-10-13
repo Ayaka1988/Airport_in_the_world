@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
     end
+    get '/posts/area/:area_id' => 'posts#area', as: 'area_index'
 
     # resources :users
     get  '/users/:id' => 'users#show', as: 'user_mypage'
