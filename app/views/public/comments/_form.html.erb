@@ -1,0 +1,4 @@
+  <%= form_with model: [post, comment], local:false do |f| %>
+    <%= f.text_area :reply, placeholder: 'コメントをここに'%>
+    <%= f.submit "コメントする" %>
+  <% end %>
