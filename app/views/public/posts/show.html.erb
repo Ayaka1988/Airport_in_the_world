@@ -7,12 +7,19 @@
 
     <!--画像-->
     <div class="col-2 ml-3">
-    <%# @posts.each do |post| %>
       <% if @post.image.attached? %>
        <%= image_tag @post.image, size: "200x120" %>
       <% else %>
        <%= image_tag 'no_image', size: "200x120" %>
       <% end %>
+      <div>
+      <% if @post.user == current_user %>
+      <%= link_to "投稿を編集", edit_post_path, class:"btn btn-sm btn-info" %>
+      <br>
+      <br>
+      <%= link_to "投稿を削除", post_path(@post.id), class:"btn btn-sm btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+      </div>
     </div>
 
     <!--空港情報-->
@@ -33,6 +40,22 @@
       <br>
       <h5 class="text-center"><strong>ユーザー名：<%= @post.user.name %></strong></h5>
     </div>
+    <div>
+      <p>コメント件数：<%= @post.comments.count %></p>
+      <% @post.comments.each do |comment| %>
+        <%= comment.user.name %>
+        <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.reply %>
+        <% if comment.user == current_user %>
+         <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+         <% end %>
+      <% end %>
+    </div>
+    <div>
+      <%= form_with model: [@post, @comment] do |f| %>
+        <%= f.text_area :reply, rows: '5', placeholder: "コメントをここに" %>
+        <%= f.submit "コメントする" %>
+      <% end %>
+</div>
   </div>
 </div>
 

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get '/about' => "homes#about"
     resources :genres
     resources :contacts, only: [:new, :create]
-    resources :posts ,only: [:new, :create, :index, :show, :destroy, :update] do
+    resources :posts  do
       resources :comments, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
     end

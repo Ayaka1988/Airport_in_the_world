@@ -7,9 +7,13 @@
     <tr>
      <td class="table-img">
       <% if post.image.attached? %>
+       <%= link_to post_path(post) do %>
        <%= image_tag post.image, size: "200x120" %>
+       <% end %>
       <% else %>
+       <%= link_to post_path(post) do %>
        <%= image_tag 'no_image', size: "200x120" %>
+       <% end %>
       <% end %>
      </td>
      <td class="table-txt">
@@ -20,6 +24,7 @@
       カテゴリー：<%= post.genre.parent.name %>>✈︎><%= post.genre.name %><br>
       ユーザー名：<%= post.user.name %>
      </td>
+     <td><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></td>
    </table>
  <% end %>
 </div>

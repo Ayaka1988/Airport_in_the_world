@@ -7,10 +7,8 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    # byebug
     @post =Post.find(params[:id])
-    # @genres = Genre.find_by(ancestry: nil).children
-    # @post = @genres
+    @comment = Comment.new
   end
 
   def create
@@ -27,14 +25,31 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @genres = Genre.find_by(ancestry: nil).children
-    # grandchild_genre = @post.genre
-    # child_genre = grandchild_genre.parent
   end
 
   def edit
+    @post =Post.find(params[:id])
+    @genres = Genre.find_by(ancestry: nil).children
+    unless @post.user == current_user
+    redirect_to  edit_post_path
+    end
   end
 
   def update
+    @post =Post.find(params[:id])
+    if  @post.update(post_params)
+      flash[:notice] = "You have update successfully "
+      redirect_to post_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @posts = Post.all
+    @post =Post.find(params[:id])
+    @post.destroy
+     redirect_to posts_path(@post.id)
   end
 
   #選択された親カテゴリーに紐付く子カテゴリーを抽出
@@ -46,13 +61,10 @@ class Public::PostsController < ApplicationController
     @genre_grandchildren = Genre.find(params[:children_id]).children
   end
 
-  def destroy
-    @posts.destroy
-    redirect_to root_path
-  end
+
 
   def area
-    byebug
+    #byebug
   end
 
   private
