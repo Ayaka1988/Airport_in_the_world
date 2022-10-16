@@ -62,9 +62,10 @@ class Public::PostsController < ApplicationController
   end
 
 
-
   def country
-    #byebug
+    @post = Post.where(genre_id: params[:country_id])
+    @country = Genre.find(params[:country_id]).name
+    # @genres = Genre.find_by(ancestry: nil).children
   end
 
   private

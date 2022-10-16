@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:create, :destroy]
     end
     get '/posts/country/:country_id' => 'posts#country', as: 'country_index'
+    post '/genres/to_country', to: 'genres#to_country', as: 'to_country'
 
     # resources :users
     resources :users, only: [:show] do

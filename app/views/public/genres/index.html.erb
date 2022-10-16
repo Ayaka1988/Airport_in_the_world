@@ -1,26 +1,31 @@
   <!--検索フォーム-->
-  <div class="container">
-  <%= form_with model: @post, local: true do |f| %>
-    <div class="row">
-        <div class="col-md-6">
-          <%= label_tag 'エリア選択' %>
-          <br>
-          <select id="area_genre_ids" class="form-control">
+  <%= form_with url: to_country_path, method: :post do |f| %>
+    <table class="table">
+      <tbody><tr></tr>
+        <tr>
+          <th>
+            <%= label_tag 'エリア選択' %>
+            <br>
+            <select id="area_genre_ids" class="form-control">
             <option value="">選択してください</option>
             <% @genres.each do |genre| %>
               <option value="<%= genre.id %>"><%= genre.name %></option>
             <% end %>
           </select>
-        </div>
-        <div class="col-md-6">
-          <%= label_tag 'カントリー選択' %>
-          <p id="message" class="d-block">エリアを選択してください</p>
-          <select class="d-none form-control" name="post[genre_id]" id="post_genre_id"></select>
-        </div>
-        <%= link_to 'test', area_index_path(area_id: 2) %>
-         <%= f.submit ' Where do you wanna go?', class: 'btn btn-info btn-block' %>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <%= label_tag 'カントリー選択' %>
+            <p id="message" class="d-block"></p>
+            <select class="d-none form-control" name="country_id" id="post_genre_id"></select>
+            <br>
+            <%= f.submit "Let's go travel", class: 'btn btn-info btn-block' %>
+          </th>
+        </tr>
+      </tbody>
+    </table>
   <% end %>
-  </div>
 
   <script>
  $(document).ready(function() {
