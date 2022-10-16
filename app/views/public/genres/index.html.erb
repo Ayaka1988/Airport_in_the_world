@@ -1,25 +1,66 @@
-<!--<div class="container mt-5">-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-3">-->
-      <h2>世界地図とジャンル載せる</h2>
-          <ul class="genres">
-            <% @parents.each do |parent| %>
-            <li class="parents">
-              <%= link_to "#{parent.name}", genre_path(parent) %>
-            </li>
-            <ul class="genres__children">
-              <% parent.children.each do |child| %>
-              <li class="childern">
-                <%= link_to "#{child.name}", genre_path(child) %>
-              </li>
-              <ul class="genres__grandchildren">
-                <% child.children.each do |grandchild| %>
-                <li class="gc">
-                  <%= link_to "#{grandchild.name}", genre_path(grandchild) %>
-                </li>
-                <% end %>
-              </ul>
-              <% end %>
-            </ul>
+  <!--検索フォーム-->
+  <div class="container">
+  <%= form_with model: @post, local: true do |f| %>
+    <div class="row">
+        <div class="col-md-6">
+          <%= label_tag 'エリア選択' %>
+          <br>
+          <select id="area_genre_ids" class="form-control">
+            <option value="">選択してください</option>
+            <% @genres.each do |genre| %>
+              <option value="<%= genre.id %>"><%= genre.name %></option>
             <% end %>
-          </ul>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <%= label_tag 'カントリー選択' %>
+          <p id="message" class="d-block">エリアを選択してください</p>
+          <select class="d-none form-control" name="post[genre_id]" id="post_genre_id"></select>
+        </div>
+        <%= link_to 'test', area_index_path(area_id: 2) %>
+         <%= f.submit ' Where do you wanna go?', class: 'btn btn-info btn-block' %>
+  <% end %>
+  </div>
+
+  <script>
+ $(document).ready(function() {
+  $('#area_genre_ids').change(function() {
+
+   let area_id = $(this).val(); // 自分自身のvalを取得する
+
+   // area_idが選択されていなかったら孫セレクトボックスを消して処理中断
+   if (area_id === '') {
+     $('#message').addClass('d-block').removeClass('d-none');
+     $('#post_genre_id').addClass('d-none');
+     return false;
+   }
+
+   $.ajax('/get_genre/grandchildren', {
+     type: 'get',
+     data: {children_id: area_id},
+     dataType: 'json'
+   })
+   // 取得に成功
+   .done(function(countries) {
+     $('#message').removeClass('d-block').addClass('d-none');
+     $('#post_genre_id').removeClass('d-none'); // エリアが選ばれたらセレクトボックス出現
+     $('#post_genre_id > option').remove(); // 一旦孫のセレクトボックスをクリア
+     // 孫セレクトボックスに国名を順次ループで追加
+     countries.forEach(function(country) {
+       $('#post_genre_id').append($('<option>').html(country.name).val(country.id))
+     })
+   })
+   // 取得に失敗
+   .fail(function() {
+     alert('通信に失敗しました。時間をおいてサイド実行してください。');
+   })
+
+  })
+ })
+</script>
+
+
+
+              <%# @parents.each do |parent| %>
+              <%# parent.children.each do |child| %>
+              <%# child.children.each do |grandchild| %>

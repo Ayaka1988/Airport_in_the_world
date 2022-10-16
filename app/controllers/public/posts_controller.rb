@@ -63,7 +63,7 @@ class Public::PostsController < ApplicationController
 
 
 
-  def area
+  def country
     #byebug
   end
 

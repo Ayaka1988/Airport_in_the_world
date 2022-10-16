@@ -1,6 +1,6 @@
 <div class="container">
   <%= form_with model: @post, local: true do |f| %>
-    <!--user名反映させる-->
+
 
     <div class="row">
       <div class="col-md-6">
@@ -24,7 +24,7 @@
     <br>
     <%= f.text_field :airport_name, class:'form-control' %>
     <br>
-    <%= f.label :'画像' %>
+    <%= f.label :'イメージ' %>
     <br>
     <%= f.file_field :image, accept: "image/*" %>
     <br>
@@ -39,7 +39,7 @@
     <%= f.text_area :sleep_space, class:'form-control' %>
     <br>
 
-    <%= f.label :security,'治安' %>
+    <%= f.label :security, '治安' %>
     <br>
     <%= f.text_field :security, class:'form-control' %>
     <br>

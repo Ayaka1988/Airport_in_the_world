@@ -1,29 +1,23 @@
-<div class="container mt-5">
+<div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <!--部分テンプレート入れる-->
-      <%#= render ' %>
-    </div>
-
-    <!--画像-->
-    <div class="col-2 ml-3">
+    <div class="col-md-2">
+      <!--画像-->
       <% if @post.image.attached? %>
        <%= image_tag @post.image, size: "200x120" %>
       <% else %>
        <%= image_tag 'no_image', size: "200x120" %>
       <% end %>
-      <div>
+      <br>
       <% if @post.user == current_user %>
       <%= link_to "投稿を編集", edit_post_path, class:"btn btn-sm btn-info" %>
       <br>
       <br>
       <%= link_to "投稿を削除", post_path(@post.id), class:"btn btn-sm btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %>
       <% end %>
-      </div>
     </div>
 
     <!--空港情報-->
-    <div class=" col-5 ml-5">
+    <div class="col-md-7">
       <h4 class="text-center"><strong>空港名：<%= @post.airport_name %></strong></h4>
       <br>
       <p class="text-center">カテゴリー：<%= @post.genre.parent.name %>>✈︎><%= @post.genre.name %></p>
@@ -40,18 +34,28 @@
       <br>
       <h5 class="text-center"><strong>ユーザー名：<%= @post.user.name %></strong></h5>
     </div>
-    <div>
-      <p>コメント件数：<%= @post.comments.count %></p>
-      <%= render 'public/comments/form', post: @post, comment: @comment %>
-    </div>
-    <!--部分テンプレート：コメントフォーム-->
-    <div class="new-comment">
 
-    </div>
-    <!--部分テンプレート：コメント一覧部分-->
-    <div id="comments_area">
-        <%= render 'public/comments/index', post: @post %>
+    <div class="col-md-3">
+      <div id="bookmarks_buttons_<%= @post.id %>">
+      <%= render "public/bookmarks/bookmarks", post: @post %>
+      </div>
+      <p>コメント件数：<%= @post.comments.count %></p>
+      <!--部分テンプレート：コメント一覧部分-->
+      <%= render 'public/comments/index', post: @post %>
+      <br>
+      <br>
+      <!--部分テンプレート：コメントフォーム-->
+      <%= render 'public/comments/form', post: @post, comment: @comment %>
     </div>
   </div>
 </div>
+
+    <!--<div class="new-comment">-->
+
+
+
+    <!--<div id="comments_area">-->
+
+
+
 

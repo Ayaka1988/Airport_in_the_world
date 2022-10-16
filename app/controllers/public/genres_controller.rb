@@ -1,6 +1,5 @@
 class Public::GenresController < ApplicationController
   def index
-    
     @parents = Genre.where(ancestry: nil)
   end
 
@@ -20,9 +19,9 @@ class Public::GenresController < ApplicationController
 
   private
 
-  def set_genre
-    @genre = Genre.find(params[:id])
-  end
+  # def set_genre
+  #   @genre = Genre.find(params[:id])
+  # end
 
   def genre_params
      params.require(:genre).permit(:name, :ancestry)

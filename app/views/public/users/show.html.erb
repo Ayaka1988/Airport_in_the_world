@@ -21,20 +21,14 @@
         	  <th>メールアドレス</th>
         	  <th><%= @user.email %></th>
           </tr>
+          <tr>
+            <th><%= @user.name %>さんの投稿/ブックマーク一覧 </th>
+            <th><%= link_to "一覧を見る" , bookmarks_user_path(@user), class: "btn btn-sm btn-primary" %></th>
+          </tr>
         </tbody>
       </table>
       <table class="table table-hover">
         <thead>
-          <tr>
-            <th>
-            <%= @user.name %>さんの投稿一覧
-            <%#= link_to '一覧を見る', _path, class: "btn btn-sm btn-primary" %>
-            <br>
-            <br>
-            <%= @user.name %>さんのブックマーク一覧
-            <%#= link_to '一覧を見る', _path, class: "btn btn-sm btn-primary" %>
-            </th>
-          </tr>
           <tr>
             <th><%= link_to "退会する" , unsubscribe_path, class: 'btn btn-danger' %></th>
           </tr>

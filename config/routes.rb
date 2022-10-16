@@ -32,16 +32,20 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
     end
-    get '/posts/area/:area_id' => 'posts#area', as: 'area_index'
+    get '/posts/country/:country_id' => 'posts#country', as: 'country_index'
 
     # resources :users
+    resources :users, only: [:show] do
+      member do
+      get :bookmarks
+      end
+    end
     get  '/users/:id' => 'users#show', as: 'user_mypage'
     get  '/users/:id/edit' => 'users#edit', as: 'mypage_edit'
     patch 'users/:id' =>  'users#update', as: 'mypage_update'
-    get '/users' => 'users#index' , as: 'users_post'
+    # get '/users' => 'users#index' , as: 'users_post'
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-
     #中間テーブル
     get 'get_genre/children', to: 'posts#get_genre_children', defaults: { format: 'json' }
     get 'get_genre/grandchildren', to: 'posts#get_genre_grandchildren', defaults: { format: 'json' }

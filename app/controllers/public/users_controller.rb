@@ -7,9 +7,9 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-  #   @user = User.find(params[:id])
+    @user = User.find(params[:id])
     @user = current_user
-    # @posts = current_user.posts
+    @post = @user.posts
   end
 
 
@@ -32,6 +32,12 @@ class Public::UsersController < ApplicationController
     else
     render "edit"
     end
+  end
+
+  def bookmarks
+    @user = User.find(params[:id])
+    bookmarks = Bookmark.where(user_id: @user.id).pluck(:post_id)
+    @bookmark_posts = Post.find(bookmarks)
   end
 
   def unsubscribe
