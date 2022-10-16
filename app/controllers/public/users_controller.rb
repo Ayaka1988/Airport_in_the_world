@@ -10,6 +10,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user = current_user
     @post = @user.posts
+
   end
 
 
@@ -38,7 +39,9 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     bookmarks = Bookmark.where(user_id: @user.id).pluck(:post_id)
     @bookmark_posts = Post.find(bookmarks)
+    @posts = Post.includes(:user).where(user_id: current_user.id)
   end
+
 
   def unsubscribe
     @user = current_user

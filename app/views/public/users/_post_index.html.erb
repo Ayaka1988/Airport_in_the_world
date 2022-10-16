@@ -1,0 +1,28 @@
+<h3>投稿一覧</h3>
+  <% posts.each do |post| %>
+  <table class="table table-hover table-inverse">
+    <tr>
+      <td class="table-img">
+        <% if post.image.attached? %>
+          <%= link_to post_path(post) do %>
+          <%= image_tag post.image, size: "200x120" %>
+          <% end %>
+        <% else %>
+          <%= link_to post_path(post) do %>
+          <%= image_tag 'no_image', size: "200x120" %>
+           <% end %>
+        <% end %>
+      </td>
+      <td class="table-txt">
+        空港名：
+        <%= link_to post_path(post) do %>
+        <%= post.airport_name %>
+        <% end %><br>
+        カントリー : <%= post.genre.name %><br>
+        その他 : <%= post.others %><br>
+        ユーザー名：<%= post.user.name %>
+      </td>
+    </tr>
+  </table>
+  <% end %>
+
