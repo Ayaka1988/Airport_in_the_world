@@ -4,11 +4,6 @@ class Public::GenresController < ApplicationController
     @genres = Genre.find_by(ancestry: nil).children
   end
 
-  def to_country
-   country_id = params[:country_id]
-   redirect_to "/posts/country/#{country_id}"
-  end
-
   def new
     @genres = Genre.find_by(ancestry: nil).children
   end

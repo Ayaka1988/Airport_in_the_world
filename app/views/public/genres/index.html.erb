@@ -1,5 +1,5 @@
   <!--検索フォーム-->
-  <%= form_with url: to_country_path, method: :post do |f| %>
+  <%= form_with url: country_index_path, method: :get do |f| %>
     <table class="table">
       <tbody><tr></tr>
         <tr>
@@ -33,12 +33,12 @@
 
    let area_id = $(this).val(); // 自分自身のvalを取得する
 
-   // area_idが選択されていなかったら孫セレクトボックスを消して処理中断
-   if (area_id === '') {
+    //area_idが選択されていなかったら孫セレクトボックスを消して処理中断
+  if (area_id === '') {
      $('#message').addClass('d-block').removeClass('d-none');
      $('#post_genre_id').addClass('d-none');
      return false;
-   }
+  }
 
    $.ajax('/get_genre/grandchildren', {
      type: 'get',
@@ -66,6 +66,4 @@
 
 
 
-              <%# @parents.each do |parent| %>
-              <%# parent.children.each do |child| %>
-              <%# child.children.each do |grandchild| %>
+

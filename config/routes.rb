@@ -26,14 +26,14 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => "homes#about"
+    get 'search' => 'searches#search'
     resources :genres
     resources :contacts, only: [:new, :create]
+    get '/posts/country' => 'posts#country', as: 'country_index'
     resources :posts  do
       resources :comments, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
     end
-    get '/posts/country/:country_id' => 'posts#country', as: 'country_index'
-    post '/genres/to_country', to: 'genres#to_country', as: 'to_country'
 
     # resources :users
     resources :users, only: [:show] do
