@@ -60,7 +60,7 @@ class Public::PostsController < ApplicationController
   def get_genre_grandchildren
     @genre_grandchildren = Genre.find(params[:children_id]).children
   end
-  
+
   def search
     Post.where(name: params[:name])
   end

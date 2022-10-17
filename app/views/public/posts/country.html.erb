@@ -1,25 +1,29 @@
 <div class="container">
   <h4><%= @genre.name %>の空港</h4>
   <table class="table table-hover table-inverse">
-    <% @posts.each do |post| %>
-      <tr>
-        <td class="table-img">
-        <%# if post.image.attached? %>
-        <%#= link_to post_path(post) do %>
-        <%#= image_tag post.image, size: "200x120" %>
-        <%# end %>
-        <%# else %>
-        <%#= link_to post_path(post) do %>
-        <%#= image_tag 'no_image', size: "200x120" %>
-        <%# end %>
-        <%# end %>
-        </td>
-        <td class="table-txt">
+  <% @posts.each do |post| %>
+    <tr>
+      <td class="table-img">
+        <% if post.image.attached? %>
+          <%= link_to post_path(post) do %>
+          <%= image_tag post.image, size: "200x120" %>
+          <% end %>
+        <% else %>
+          <%= link_to post_path(post) do %>
+          <%= image_tag 'no_image', size: "200x120" %>
+          <% end %>
+        <% end %>
+      </td>
+      <td class="table-txt">
         空港名：
+        <%= link_to post_path(post) do %>
         <%= post.airport_name %>
-        </td>
-      </tr>
-    <% end %>
+        <% end %><br>
+        カテゴリー：<%= post.genre.parent.name %>>✈︎><%= post.genre.name %><br>
+        ユーザー名：<%= post.user.name %>
+      </td>
+    </tr>
+  <% end %>
   </table>
 </div>
 
