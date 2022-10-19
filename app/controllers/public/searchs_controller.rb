@@ -2,7 +2,9 @@ class Public::SearchsController < ApplicationController
   before_action :authenticate_user!
 
   def search
-    @range = params[:range]
-    @posts = Post.looks(params[:search], params[:word])
+    @posts = Post.search(params[:keyword])
+    @posts = Post.where(airport_name: params[:airport_name])
   end
+
+
 end

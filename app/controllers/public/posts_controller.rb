@@ -61,9 +61,9 @@ class Public::PostsController < ApplicationController
     @genre_grandchildren = Genre.find(params[:children_id]).children
   end
 
-  def search
-    Post.where(name: params[:name])
-  end
+  # def search
+  #   Post.where(name: params[:name])
+  # end
 
   def country
     @genre = Genre.find(params[:country_id])

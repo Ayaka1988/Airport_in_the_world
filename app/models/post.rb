@@ -13,14 +13,11 @@ class Post < ApplicationRecord
     bookmarks.where(user_id: user).exists?
   end
 
-  # 検索方法分岐
-  def self.looks(search, word)
-    if search == "perfect_match" #完全一致
-      @post = Post.where("title LIKE?","#{word}")
-    elsif search == "partial_match" #部分一致
-      @post = Post.where("title LIKE?","#{word}")
+  def self.search(search)
+     if search != ''
+      Post.where('airport_name LIKE(?)', "%#{search}%")
     else
-      @post = Post.all
+      Post.all
     end
   end
 end
