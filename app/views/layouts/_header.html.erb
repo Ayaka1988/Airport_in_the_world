@@ -7,13 +7,16 @@
         <% end %>
         <% if user_signed_in? %>
           <div class="user">
-          　&nbsp;Welcome ✈ <%= current_user.name %>さん
+            &nbsp;Welcome ✈ <%= current_user.name %>さん
           </div>
         <% end %>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!--検索フォーム-->
+      <%= render 'public/posts/search' %>
+
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>

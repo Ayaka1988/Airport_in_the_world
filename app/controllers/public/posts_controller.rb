@@ -1,9 +1,10 @@
 class Public::PostsController < ApplicationController
 
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def index
-    @posts = Post.all
-    # # byebug
-    # @post = Post.new
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
+    @genres = Genre.find_by(ancestry: nil).children
   end
 
   def show
@@ -61,12 +62,15 @@ class Public::PostsController < ApplicationController
     @genre_grandchildren = Genre.find(params[:children_id]).children
   end
 
-  # def search
-  #   Post.where(name: params[:name])
-  # end
+  def search
+    # @posts = Post.where(airport_name: params[:airport_name])
+    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(10)
+    @genres = Genre.find_by(ancestry: nil).children
+  end
 
   def country
     @genre = Genre.find(params[:country_id])
+    @genres = Genre.find_by(ancestry: nil).children
     @posts = @genre.posts
   end
 
@@ -74,6 +78,14 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:airport_name, :open_hour, :sleep_space, :security, :url, :others, :genre_id, :image).merge(user_id: current_user.id)
+  end
+
+  def correct_user
+    @post = Post.find(params[:id])
+	 # if @post.user_id != current_user(params[:user_id])
+		# flash[:notice] = "You do not have authority"
+		# redirect_back(fallback_location: root_path)
+	 # end
   end
 
 end

@@ -6,13 +6,7 @@
       <%= render 'public/genres/genre', genres: @genres %>
       <br>
       <br>
-      <div class="postlink">
-        <h6>Please give us<br>your information of airport!</h6>
-        <a class="navbar-brand" href="/posts/new"></a>
-          <%= link_to new_post_path, style:"font-size: 40px;" do %>
-          <i class="fas fa-flag-checkered"></i>
-          <% end %>
-      </div>
+      <%= render 'public/posts/postlink' %>
     </div>
     <div class="col-md-10">
       <h1>Airport in the world</h1>

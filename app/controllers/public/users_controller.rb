@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
 
   def index
     @users = User.all
-    
+
   end
 
   def show
@@ -37,19 +37,19 @@ class Public::UsersController < ApplicationController
   def bookmarks
     @user = User.find(params[:id])
     bookmarks = Bookmark.where(user_id: @user.id).pluck(:post_id)
-    @bookmark_posts = Post.find(bookmarks)
-    @posts = Post.includes(:user).where(user_id: current_user.id)
+    @bookmark_posts = Post.where(id: bookmarks).page(params[:page]).per(5)
+    @posts = Post.includes(:user).where(user_id: current_user.id).page(params[:page]).per(5)
   end
 
 
   def unsubscribe
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   #退会処理
   def withdrawal
     @user = User.find(params[:id])
-    @user.update(is_valid: false) #falseにすることで退会済に変更
+    @user.update(is_valid: false)
     reset_session
     flash[:notice] = "退会処理を行いました"
     redirect_to root_path

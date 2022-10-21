@@ -1,57 +1,62 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-2">
-      <h3 class="my-4 mt-5">編集</h3>
-      <%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
-      <div class="field text-center mt-4">
-        <%= f.label :"イメージ" %>
-        <%= f.file_field :image, accept: "image/*" %>
+  <%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="my-4 mt-5">編集ページ&nbsp;<i class="fas fa-edit"></i></h3>
+        <div class="field text-center mt-4">
+          <%= f.label :"イメージ" %>
+          <%= f.file_field :image, class: "form-control", accept: "image/*" %>
+        </div>
+        <div class="field text-center mt-4">
+          <%= f.label :"空港名", class: "mr-3" %>
+          <%= f.text_field :airport_name, class: "form-control" %>
+        </div>
+        <div class="field text-center mt-4">
+          <%= label_tag 'エリア選択' %>
+          <select id="area_genre_ids" class="form-control">
+            <option value="">選択してください</option>
+            <% @genres.each do |genre| %>
+              <option value="<%= genre.id %>"><%= genre.name %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="field text-center mt-4">
+          <%= label_tag 'カントリー選択' %>
+          <p id="message" class="d-block">エリアを選択してください</p>
+          <select class="d-none form-control" name="post[genre_id]" id="post_genre_id"></select>
+        </div>
       </div>
-      <div class="field text-center mt-4">
-        <%= f.label :"空港名", class: "mr-3" %>
-        <%= f.text_field :airport_name %>
-      </div>
-      <div class="field text-center mt-4">
-        <%= label_tag 'エリア選択' %>
-        <select id="area_genre_ids" class="form-control">
-          <option value="">選択してください</option>
-          <% @genres.each do |genre| %>
-            <option value="<%= genre.id %>"><%= genre.name %></option>
+
+      <div class="col-md-6">
+        <div class="field text-center mt-4">
+          <%= f.label :"営業時間", class: "mr-3" %>
+          <%= f.text_field :open_hour, class: "form-control" %>
+        </div>
+        <div class="field text-center mt-4">
+          <%= f.label :"仮眠スペース", class: "mr-3" %>
+          <%= f.text_area :sleep_space, class: "form-control" %>
+        </div>
+        <div class="field text-center mt-4">
+          <%= f.label :"治安", class: "mr-3" %>
+          <%= f.text_field :security, class: "form-control"%>
+        </div>
+        <div class="field text-center mt-4">
+          <%= f.label :"ＵＲＬ", class: "mr-3" %>
+          <%= f.text_field :url, class: "form-control" %>
+        </div>
+        <div class="field text-center mt-4">
+          <%= f.label :"その他", class: "mr-3" %>
+          <%= f.text_area :others, size: "15x6", class: "form-control" %>
+        </div>
+        <div class="actions text-center mt-4">
+          <%= f.button type: "submit", class: "btn btn-info" do %>
+            変更を保存 <i class="fas fa-paper-plane"></i>
           <% end %>
-        </select>
+        </div>
       </div>
-      <div class="field text-center mt-4">
-        <%= label_tag 'カントリー選択' %>
-        <p id="message" class="d-block">エリアを選択してください</p>
-        <select class="d-none form-control" name="post[genre_id]" id="post_genre_id"></select>
-      </div>
-      <div class="field text-center mt-4">
-        <%= f.label :"営業時間", class: "mr-3" %>
-        <%= f.text_field :open_hour %>
-      </div>
-      <div class="field text-center mt-4">
-        <%= f.label :"仮眠スペース", class: "mr-3" %>
-        <%= f.text_field :sleep_space %>
-      </div>
-      <div class="field text-center mt-4">
-        <%= f.label :"治安", class: "mr-3" %>
-        <%= f.text_field :security %>
-      </div>
-      <div class="field text-center mt-4">
-        <%= f.label :"URL", class: "mr-3" %>
-        <%= f.text_field :url %>
-      </div>
-      <div class="field text-center mt-4">
-        <%= f.label :"その他", class: "mr-3" %>
-        <%= f.text_field :others %>
-      </div>
-      <div class="actions text-center mt-4">
-      <%= f.submit '変更を保存 ', class: 'btn btn-info btn-block' %>
-      </div>
-      <% end %>
     </div>
   </div>
-</div>
+  <% end %>
 
 <script>
  $(document).ready(function() {

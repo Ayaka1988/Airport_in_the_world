@@ -1,3 +1,5 @@
+Admin.create!(email: 'ayaka@t', password: 'ayakaterada', name: 'ayaka')
+
 area = Genre.create(:name => 'world')
 
 #子要素作成

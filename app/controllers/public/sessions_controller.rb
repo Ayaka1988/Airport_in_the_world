@@ -15,10 +15,6 @@ class Public::SessionsController < Devise::SessionsController
   # 退会しているかを判断するメソッド
   def user_state
     @user = User.find_by(email: params[:user][:email])
-
-    #アカウントを取得できなかった場合、このメソッド終了
-    return if !@user
-
     #取得したアカウントのパスワードと入力されたパスワードが一致しているか？
     if @user.valid_password?(params[:user][:password]) && (@user.is_valid == '退会')
       flash[:notice] = "退会済みです。"

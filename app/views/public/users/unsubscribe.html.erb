@@ -8,7 +8,7 @@
         </p>
         <p class="text-center">
           <%= link_to "退会しない", user_mypage_path(@user) , class: "btn btn-primary mr-5" %>
-          <%= link_to "退会する", withdrawal_path(@user), class: "btn btn-danger ml-5" , method: :patch, data: { confilm: "本当に退会しますか？" } %>
+          <%= link_to "退会する", withdrawal_path, class: "btn btn-danger ml-5" , method: :patch, data: { confilm: "本当に退会しますか？" } %>
         </p>
     </div>
   </div>

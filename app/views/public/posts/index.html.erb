@@ -1,31 +1,42 @@
-<!--部分テンプレート挿入-->
-<%#= link_to 'test', country_index_path(country_id: 2) %>
-<div class="container">
- <% @posts.each do |post| %>
-  <h4><%= post.genre.name %>の空港</h>
-   <table class="table table-hover table-inverse">
-    <tr>
-     <td class="table-img">
-      <% if post.image.attached? %>
-       <%= link_to post_path(post) do %>
-       <%= image_tag post.image, size: "200x120" %>
-       <% end %>
-      <% else %>
-       <%= link_to post_path(post) do %>
-       <%= image_tag 'no_image', size: "200x120" %>
-       <% end %>
-      <% end %>
-     </td>
-     <td class="table-txt">
-      空港名：
-      <%= link_to post_path(post) do %>
-      <%= post.airport_name %>
-      <% end %><br>
-      カテゴリー：<%= post.genre.parent.name %>>✈︎><%= post.genre.name %><br>
-      ユーザー名：<%= post.user.name %>
-     </td>
-     <td><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></td>
-   </table>
- <% end %>
+
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-md-2 mt-4 mr-5">
+    <%= render 'public/genres/genre', genres: @genres %>
+  </div>
+
+  <!--airport一覧-->
+  <div class="col-md-9 mt-4">
+   <% @posts.each do |post| %>
+    <h5><%= post.genre.name %>の空港</h5>
+     <table class="table table-hover table-inverse">
+      <tr>
+        <td class="table-img">
+         <% if post.image.attached? %>
+          <%= link_to post_path(post) do %>
+          <%= image_tag post.image, size: "200x120" %>
+          <% end %>
+         <% else %>
+          <%= link_to post_path(post) do %>
+          <%= image_tag 'no_image', size: "200x120" %>
+          <% end %>
+         <% end %>
+        </td>
+        <td class="table-txt">
+         空港名：
+         <%= link_to post_path(post) do %>
+         <%= post.airport_name %>
+         <% end %><br>
+         <br>
+         カテゴリー：<%= post.genre.parent.name %>>✈︎><%= post.genre.name %><br>
+         <br>
+         ユーザー名：<%= post.user.name %>
+        </td>
+        <td><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></td>
+     </table>
+    <% end %>
+    <%= paginate @posts %>
+   </div>
+  </div>
 </div>
 

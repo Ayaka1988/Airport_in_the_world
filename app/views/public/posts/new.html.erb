@@ -2,7 +2,7 @@
   <%= form_with model: @post, local: true do |f| %>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 mt-4">
         <%= label_tag 'エリア選択' %>
         <br>
         <select id="area_genre_ids" class="form-control">
@@ -12,7 +12,7 @@
           <% end %>
         </select>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 mt-4">
         <%= label_tag 'カントリー選択' %>
         <p id="message" class="d-block">エリアを選択してください</p>
         <select class="d-none form-control" name="post[genre_id]" id="post_genre_id"></select>
@@ -20,8 +20,7 @@
     </div>
     <br>
     <%= f.label :airport_name,'空港名' %>
-    <br>
-    <%= f.text_field :airport_name, class:'form-control' %>
+    <%= f.text_field :airport_name, placeholder: "カタカナでご記入ください：例 ヒースロー空港", class:'form-control' %>
     <br>
     <%= f.label :'イメージ' %>
     <br>
@@ -30,33 +29,31 @@
     <br>
     <%= f.label :open_hour,'営業時間' %>
     <br>
-    <%= f.text_field :open_hour, class:'form-control' %>
+    <%= f.text_field :open_hour, placeholder: "24時間OPEN", class:'form-control' %>
     <br>
 
     <%= f.label :sleep_space, '仮眠スペース' %>
     <br>
-    <%= f.text_area :sleep_space, class:'form-control' %>
+    <%= f.text_area :sleep_space, placeholder: "空港内にカプセルホテルあり", class:'form-control' %>
     <br>
 
     <%= f.label :security, '治安' %>
     <br>
-    <%= f.text_field :security, class:'form-control' %>
+    <%= f.text_field :security, placeholder: "4.0点/5.0点中、スリに注意",class:'form-control' %>
     <br>
 
     <%= f.label :url,'URL' %>
     <br>
-    <%= f.text_field :url, class:'form-control' %>
+    <%= f.text_field :url, placeholder: "空港サイトのURLなどにお使いください", class:'form-control' %>
     <br>
 
     <%= f.label :others, 'その他' %>
     <br>
-    <%= f.text_area :others, class:'form-control' %>
+    <%= f.text_area :others, size: "100x10", placeholder: "SHOP情報やおすすめ情報など", class:'form-control' %>
     <br>
 
-    <%= f.submit 'Have a safe flight !', class: 'btn btn-primary btn-block' %>
+    <%= f.submit 'Have a safe flight !', class: 'btn btn-info btn-block' %>
   <% end %>
-
-
 </div>
 
 <script>

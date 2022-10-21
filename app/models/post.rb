@@ -13,9 +13,9 @@ class Post < ApplicationRecord
     bookmarks.where(user_id: user).exists?
   end
 
-  def self.search(search)
-     if search != ''
-      Post.where('airport_name LIKE(?)', "%#{search}%")
+  def self.search(keyword)
+    if keyword != ""
+      Post.where(["airport_name like?", "%#{keyword}%"])
     else
       Post.all
     end

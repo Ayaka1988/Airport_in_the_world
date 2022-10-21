@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   #ユーザー用
   #URL/users/sign_in...
   devise_for :users,skip: [:passwords], controllers: {
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
 
   #管理者用
   #URL /admins/sign_in ...
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     session: "admin/sessions"
   }
 
@@ -26,13 +27,15 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => "homes#about"
-    get 'search' => 'searches#search'
     resources :genres
     resources :contacts, only: [:new, :create]
     get '/posts/country' => 'posts#country', as: 'country_index'
     resources :posts  do
       resources :comments, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
+      collection do
+      get "search"
+      end
     end
 
     # resources :users
@@ -44,10 +47,11 @@ Rails.application.routes.draw do
     get  '/users/:id' => 'users#show', as: 'user_mypage'
     get  '/users/:id/edit' => 'users#edit', as: 'mypage_edit'
     patch 'users/:id' =>  'users#update', as: 'mypage_update'
-    # get '/users' => 'users#index' , as: 'users_post'
-    get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-    patch 'users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-    #中間テーブル
+    #退会確認画面
+    get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    #論理削除のルーティング
+    patch 'users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+
     get 'get_genre/children', to: 'posts#get_genre_children', defaults: { format: 'json' }
     get 'get_genre/grandchildren', to: 'posts#get_genre_grandchildren', defaults: { format: 'json' }
   end

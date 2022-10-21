@@ -63,5 +63,7 @@ gem 'ancestry'
 
 gem 'kaminari'
 
+gem 'rails_admin'
+
 # gem 'jquery-rails'
 
