@@ -17,6 +17,7 @@
  * require_tree .
  *= require_self
  */
-  // .info {
-  //   border-bottom: 1px solid black;
-  // }
+  table.table th {
+    white-space:nowrap;
+  }
+

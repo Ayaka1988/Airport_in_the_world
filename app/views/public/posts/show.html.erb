@@ -69,16 +69,20 @@
     </div>
 
     <div class="col-md-2 mt-5 ml-4 text-center">
-      <div id="bookmarks_buttons_<%= @post.id %>">
-      <%= render "public/bookmarks/bookmarks", post: @post %>
+      <div class="mb-10" style="color: naby;">
+        <div id="bookmarks_buttons_<%= @post.id %>">
+          <%= render "public/bookmarks/bookmarks", post: @post %>
+        </div>
       </div>
-      <p>コメント件数：<%= @post.comments.count %></p>
-      <!--部分テンプレート：コメント一覧部分-->
-      <%= render 'public/comments/index', post: @post %>
-      <br>
-      <br>
-      <!--部分テンプレート：コメントフォーム-->
-      <%= render 'public/comments/form', post: @post, comment: @comment %>
+　　　<br>
+　　　<br>
+      <div >
+        <h5 class style="color: naby;">コメント件数：<%= @post.comments.count %></h5>
+          <!--部分テンプレート：コメント一覧部分-->
+          <%= render 'public/comments/index', post: @post %>
+          <!--部分テンプレート：コメントフォーム-->
+          <%= render 'public/comments/form', post: @post, comment: @comment %>
+      </div>
     </div>
   </div>
 </div>
