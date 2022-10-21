@@ -26,9 +26,14 @@
                 <%= post.airport_name %>
                 <% end %><br>
                 <br>
-                カテゴリー：<%= post.genre.parent.name %>>✈︎><%= post.genre.name %><br>
+                エリア：<%= post.genre.parent.name %>&emsp;✈&emsp;<%= post.genre.name %><br>
                 <br>
                 ユーザー名：<%= post.user.name %>
+              </td>
+              <td>
+                コメント&ensp;<i class="fas fa-comment-dots"></i>&ensp;<%= link_to "#{post.comments.count}", post_path(post.id) %><br>
+                <br>
+                 Bookmark&ensp;<i class="fas fa-bookmark"></i>&ensp;<%= link_to "#{post.bookmarks.count}", post_path(post.id) %>
               </td>
             </tr>
           <% end %>

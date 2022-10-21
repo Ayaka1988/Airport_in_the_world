@@ -23,7 +23,7 @@
         	  <th><%= @user.email %></th>
           </tr>
           <tr>
-            <th><%= @user.name %>さんの投稿/ブックマーク一覧 </th>
+            <th><%= @user.name %>さんの投稿&ensp;/&ensp;ブックマーク一覧 </th>
             <th><%= link_to "一覧を見る" , bookmarks_user_path(@user), class: "btn btn-sm btn-info" %></th>
           </tr>
         </tbody>
@@ -31,7 +31,7 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th><%= link_to "退会する" , unsubscribe_path, class: 'btn btn-outline-primary' %>&nbsp;&nbsp;
+            <th><%= link_to "退会する" , unsubscribe_path, class: 'btn btn-outline-dark' %>&emsp;
                 コメントや投稿には会員登録が必要です。</th>
           </tr>
         </thead>

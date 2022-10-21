@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
     @genres = Genre.find_by(ancestry: nil).children
   end
 

@@ -8,7 +8,7 @@
   <!--airport一覧-->
   <div class="col-md-9 mt-4">
    <% @posts.each do |post| %>
-    <h5><%= post.genre.name %>の空港</h5>
+    <h5><%= post.genre.name %>の空港&ensp;<i class="fas fa-plane"></i></h5>
      <table class="table table-hover table-inverse">
       <tr>
         <td class="table-img">
@@ -28,11 +28,15 @@
          <%= post.airport_name %>
          <% end %><br>
          <br>
-         カテゴリー：<%= post.genre.parent.name %>>✈︎><%= post.genre.name %><br>
+         エリア：<%= post.genre.parent.name %>&emsp;✈&emsp;<%= post.genre.name %><br>
          <br>
          ユーザー名：<%= post.user.name %>
-        </td>
-        <td><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></td>
+         <td>
+            コメント&ensp;<i class="fas fa-comment-dots"></i>&ensp;<%= link_to "#{post.comments.count}", post_path(post.id) %><br>
+            <br>
+            Bookmark&ensp;<i class="fas fa-bookmark"></i>&ensp;<%= link_to "#{post.bookmarks.count}", post_path(post.id) %>
+          </td>
+        </tr>
      </table>
     <% end %>
     <%= paginate @posts %>

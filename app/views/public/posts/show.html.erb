@@ -17,7 +17,7 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
-              <th>✈︎</th>
+              <th><i class="fas fa-info-circle fa-lg"></i>︎</th>
               <th scope="col">Airport information</th>
             </tr>
           </thead>
@@ -28,7 +28,7 @@
               </tr>
               <tr>
                 <th scope="row">エリア</th>
-                <td><%= @post.genre.parent.name %>&nbsp;&nbsp;✈&nbsp;&nbsp;<%= @post.genre.name %></td>
+                <td><%= @post.genre.parent.name %>&emsp;✈&emsp;<%= @post.genre.name %></td>
               </tr>
               <tr>
                 <th scope="row">営業時間</th>
@@ -54,15 +54,18 @@
                 <th scope="row">ユーザー</th>
                 <td><%= @post.user.name %></td>
               </tr>
+              <tr>
+              <% if @post.user == current_user %>
+                <th scope="row"></th>
+                <td>
+                  <%= link_to "投稿を編集", edit_post_path, class:"btn btn-info" %>&nbsp;&emsp;<i class="fas fa-globe fa-lg"></i>&emsp;
+                  <%= link_to "投稿を削除", post_path(@post.id), class:"btn btn-outline-dark", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                </td>
+              <% end %>
+              </tr>
           </tbody>
         </table>
       </div>
-      <% if @post.user == current_user %>
-      <%= link_to "投稿を編集", edit_post_path, class:"btn btn-sm btn-info" %>
-      <br>
-      <br>
-      <%= link_to "投稿を削除", post_path(@post.id), class:"btn btn-sm btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %>
-      <% end %>
     </div>
 
     <div class="col-md-2 mt-5 ml-4 text-center">
