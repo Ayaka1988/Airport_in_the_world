@@ -9,13 +9,14 @@
         <!--投稿一覧-->
         <%= render 'public/users/post_index', posts: @posts %>
       </div>
+      <% if @bookmark_posts.total_count > @posts.total_count %>
+        <%= paginate @bookmark_posts %>
+      <% else %>
+        <%= paginate @posts %>
+      <% end %>
     </div>
   </div>
-  <% if @bookmark_posts.total_count > @posts.total_count %>
-    <%= paginate @bookmark_posts %>
-  <% else %>
-    <%= paginate @posts %>
-  <% end %>
+
 
 
 

@@ -64,14 +64,14 @@ class Public::PostsController < ApplicationController
 
   def search
     # @posts = Post.where(airport_name: params[:airport_name])
-    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(10)
+    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(5)
     @genres = Genre.find_by(ancestry: nil).children
   end
 
   def country
     @genre = Genre.find(params[:country_id])
     @genres = Genre.find_by(ancestry: nil).children
-    @posts = @genre.posts
+    @posts = @genre.posts.order(:airport_name).page(params[:page]).per(5)
   end
 
   private

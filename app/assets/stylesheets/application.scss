@@ -19,5 +19,23 @@
  */
   table.table th {
     white-space:nowrap;
-  }
+}
 
+　.pagination {
+  justify-content: center;
+  color: #000080;
+}
+
+　.pagination>li>a {
+  border: none;
+  color: #000080;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}

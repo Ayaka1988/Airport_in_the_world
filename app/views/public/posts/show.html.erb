@@ -32,15 +32,15 @@
               </tr>
               <tr>
                 <th scope="row">営業時間</th>
-                <td><%= @post.open_hour %></td>
+                <td><%= safe_join(@post.open_hour.split("\n"),tag(:br)) %></td>
               </tr>
               <tr>
                 <th scope="row">仮眠<br>スペース</th>
-                <td><%= @post.sleep_space %></td>
+                <td><%= safe_join(@post.sleep_space.split("\n"),tag(:br)) %></td>
               </tr>
               <tr>
                 <th scope="row">治安</th>
-                <td><%= @post.security %></td>
+                <td><%= safe_join(@post.security.split("\n"),tag(:br)) %></td>
               </tr>
               <tr>
                 <th scope="row">URL</th>
@@ -48,11 +48,11 @@
               </tr>
               <tr>
                 <th scope="row">その他</th>
-                <td><%= @post.others %></td>
+                <td><%= safe_join(@post.others.split("\n"),tag(:br)) %></td>
               </tr>
               <tr>
                 <th scope="row">ユーザー</th>
-                <td><%= @post.user.name %></td>
+                <td><%= @post.user.name %><br><%= l @post.created_at %></td>
               </tr>
               <tr>
               <% if @post.user == current_user %>
@@ -74,8 +74,8 @@
           <%= render "public/bookmarks/bookmarks", post: @post %>
         </div>
       </div>
-　　　<br>
-　　　<br>
+      <br>
+      <br>
       <div >
         <h5 class style="color: naby;">コメント件数：<%= @post.comments.count %></h5>
           <!--部分テンプレート：コメント一覧部分-->
