@@ -44,7 +44,12 @@
               </tr>
               <tr>
                 <th scope="row">URL</th>
-                <td><%= @post.url %></td>
+                <td><% if @post.url.nil? %>
+                      <%= @post.url %>
+                    <% else %>
+                      <%= Rinku.auto_link(@post.url, :all, 'target="_blank"').html_safe %>
+                    <% end %>
+                </td>
               </tr>
               <tr>
                 <th scope="row">その他</th>

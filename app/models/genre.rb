@@ -12,6 +12,4 @@ class Genre < ApplicationRecord
     end
   return genre_parent_array
   end
-
-
 end

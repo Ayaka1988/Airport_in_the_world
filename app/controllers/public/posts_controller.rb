@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
 
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy, :create]
 
   def index
     @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
@@ -83,7 +83,7 @@ class Public::PostsController < ApplicationController
   def correct_user
     @post = Post.find(params[:id])
 	 # if @post.user_id != current_user(params[:user_id])
-		# flash[:notice] = "You do not have authority"
+		#   flash[:notice] = "You do not have authority"
 		# redirect_back(fallback_location: root_path)
 	 # end
   end

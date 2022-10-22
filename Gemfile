@@ -67,3 +67,4 @@ gem 'rails_admin'
 
 # gem 'jquery-rails'
 
+gem 'rinku'
