@@ -26,7 +26,7 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @genres = Genre.find_by(ancestry: nil).children
-    @current_user = 
+    # @current_user =
     if @current_user == nil
     flash[:notice]="ログインが必要です"
       redirect_to new_user_session_path
