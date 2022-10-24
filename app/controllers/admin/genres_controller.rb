@@ -1,4 +1,4 @@
-# class Admin::GenresController < ApplicationController
+class Admin::GenresController < ApplicationController
 
 #   def index
 #     @genre = Genre.new
@@ -28,4 +28,4 @@
 #     params.require(:genre).permit(:name, :ancestry)
 #   end
 
-# end
+end
