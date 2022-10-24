@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     session: "admin/sessions"
   }
 
-#admin側のルーティング
+  #admin側のルーティング
   namespace :admin do
     root to: "homes#top"
     resources :posts
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-#user側のルーティング
+  #user側のルーティング
   scope module: :public do
     root to: 'homes#top'
     get '/about' => "homes#about"
@@ -44,6 +44,12 @@ Rails.application.routes.draw do
       get :bookmarks
       end
     end
+
+    #ゲストログイン機能
+    devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    end
+
     get  '/users/:id' => 'users#show', as: 'user_mypage'
     get  '/users/:id/edit' => 'users#edit', as: 'mypage_edit'
     patch 'users/:id' =>  'users#update', as: 'mypage_update'
@@ -55,6 +61,8 @@ Rails.application.routes.draw do
     get 'get_genre/children', to: 'posts#get_genre_children', defaults: { format: 'json' }
     get 'get_genre/grandchildren', to: 'posts#get_genre_grandchildren', defaults: { format: 'json' }
   end
+
+
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

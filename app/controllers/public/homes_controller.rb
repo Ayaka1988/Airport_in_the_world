@@ -7,7 +7,6 @@ class Public::HomesController < ApplicationController
   def about
   end
 
-
   def unsubscribe #退会画面
     @user = current_user
   end
@@ -18,5 +17,11 @@ class Public::HomesController < ApplicationController
   reset_session
   redirect_to
   end
+
+private
+
+def user_params
+    params.permit(:name, :password)
+end
 
 end
