@@ -19,16 +19,42 @@
  */
   table.table th {
     white-space:nowrap;
-}
+ }
 
-　.pagination {
-  justify-content: center;
-  color: #000080;
-}
+  .comments {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
+ }
 
-　.pagination>li>a {
-  border: none;
-  color: #000080;
+  .comments .title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #95ccff;
+    font-weight: bold;
+ }
+
+  .comments .comment{
+    margin: 0;
+    padding: 0;
+  }
+
+  .pagination {
+    justify-content: center;
+    color: #000080;
+ }
+
+  .pagination>li>a {
+    border: none;
+    color: #000080;
 }
 
 .pagination>.active>a {

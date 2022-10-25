@@ -8,5 +8,7 @@
       <h4><%= link_to "Post here✈", new_post_path, class:"text-dark"%></h4>
       <br>
       <br>
-      <p>投稿にはログインが必要です</p>
+      <% if current_user == nil %>
+      <p>投稿には<%= link_to "ログイン", new_user_session_path %>が必要です</p>
+      <% end %>
   </div>

@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     session: "admin/sessions"
   }
 
+  #ゲストログイン機能
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
   #admin側のルーティング
   namespace :admin do
     root to: "homes#top"
@@ -45,10 +50,6 @@ Rails.application.routes.draw do
       end
     end
 
-    #ゲストログイン機能
-    devise_scope :user do
-    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
-    end
 
     get  '/users/:id' => 'users#show', as: 'user_mypage'
     get  '/users/:id/edit' => 'users#edit', as: 'mypage_edit'

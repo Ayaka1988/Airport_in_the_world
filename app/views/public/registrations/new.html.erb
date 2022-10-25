@@ -1,17 +1,17 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-10 mt-5">
-        <h2>Welcome!!</h2>
-        <br>
-        <br>
-        <h2>新規登録</h2>
+      <div class="col-md-1"></div>
+      <div class="col-md-10 max-auto mt-5 text-center">
+        <h2><i class="fas fa-globe"></i>&nbsp;Welcome!!</h2>
+        <p>&nbsp;</p>
+        <h4>Sign up here&nbsp;<i class="fas fa-passport"></i></h4>
           <%= form_with model: @user, url: user_registration_path do |f| %>
           <!--<%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
           <%= render "public/shared/error_messages", resource: resource %>
 
             <div class="field">
-              <%= f.label :"ユーザー名" %><br />
+              <%= f.label :"user name" %><br />
               <%= f.text_field :name %></td>
 
             <div class="field">
@@ -33,11 +33,14 @@
             </div>
             <br>
             <div class="actions">
-              <%= f.submit "Sign up" %>
+              <%= f.submit "新規登録", class: "btn btn-info" %>
             </div>
-        <% end %>
-        <br>
-        <%= render "public/shared/links" %>
+          <% end %>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm sign_in", method: :post %>
+        <%#= render "public/shared/links" %>
+      <div class="col-md-1"></div>
       </div>
     </div>
   </div>

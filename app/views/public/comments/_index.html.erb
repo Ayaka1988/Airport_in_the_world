@@ -1,8 +1,21 @@
-<% post.comments.each do |comment| %>
-    <%= comment.user.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %>
-    <%= comment.reply %>
-    <% if comment.user == current_user %>
-    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger"%>
-    <% end %>
-<% end %>
+  <div class="comments">
+    <span class="title">comment✈</span>
+    <table class="comment">
+      <% post.comments.each do |comment| %>
+        <tr>
+          <th><%= comment.user.name %></th>
+        </tr>
+        <tr>
+          <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= comment.reply %>
+            <% if comment.user == current_user %>
+            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger"%>
+            <% end %>
+           </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>

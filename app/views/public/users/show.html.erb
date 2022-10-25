@@ -5,9 +5,13 @@
 
       <table class="table table-hover">
       <% if @user == current_user %>
+
         <thead>
           <th>登録情報</th>
-          <th><%= link_to '編集する', mypage_edit_path, class: "btn btn-sm btn-info" %></th>
+          <th><% if @user.name != "guestuser" %>
+              <%= link_to '編集する', mypage_edit_path, class: "btn btn-sm btn-info" %>
+              <% end %>
+          </th>
         </thead>
         <tbody>
           <tr>
@@ -31,11 +35,16 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th><%= link_to "退会する" , unsubscribe_path, class: 'btn btn-outline-dark' %>&emsp;
-                コメントや投稿には会員登録が必要です。</th>
+            <th>
+              <% if @user.name != "guestuser" %>
+              <%= link_to "退会する" , unsubscribe_path, class: 'btn btn-outline-dark' %>&emsp;
+                コメントや投稿には会員登録が必要です。
+              <% end %>
+            </th>
           </tr>
         </thead>
       <% end %>
+
       </table>
     </div>
   </div>

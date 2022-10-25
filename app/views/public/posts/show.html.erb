@@ -79,14 +79,17 @@
           <%= render "public/bookmarks/bookmarks", post: @post %>
         </div>
       </div>
-      <br>
-      <br>
+        <br>
+        <br>
       <div >
-        <h5 class style="color: naby;">コメント件数：<%= @post.comments.count %></h5>
-          <!--部分テンプレート：コメント一覧部分-->
-          <%= render 'public/comments/index', post: @post %>
+        <h5 class style="comment">コメント件数：<%= @post.comments.count %></h5>
+        <br>
           <!--部分テンプレート：コメントフォーム-->
           <%= render 'public/comments/form', post: @post, comment: @comment %>
+          <br>
+          <br>
+          <!--部分テンプレート：コメント一覧部分-->
+          <%= render 'public/comments/index', post: @post %>
       </div>
     </div>
   </div>
