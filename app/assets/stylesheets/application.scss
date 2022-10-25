@@ -25,7 +25,7 @@
     position: relative;
     margin: 2em 0;
     padding: 0.5em 1em;
-    border: solid 3px #95ccff;
+    border: solid 3px #001A43;
     border-radius: 8px;
  }
 
@@ -38,7 +38,7 @@
     line-height: 1;
     font-size: 19px;
     background: #FFF;
-    color: #95ccff;
+    color: #001A43;
     font-weight: bold;
  }
 
@@ -67,11 +67,16 @@
 }
 
 
-.map{
-  background: #888 url(../images/map.jpg);
+.about-page {
+  background-image: image-url('airport.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
-// .map {
-//   background-image: url('/assets/images/map.jpg');
-//   background-repeat: no-repeat;
-//   background-size: cover;
-// }
+
+.map {
+  background-image: image-url('map.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1000px;
+}

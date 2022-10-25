@@ -8,6 +8,8 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   validates :airport_name, presence: true
+  validates :sleep_space, length: { maximum: 200 }
+  validates :others, length: { maximum: 500 }
 
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
