@@ -17,6 +17,14 @@
  * require_tree .
  *= require_self
  */
+
+body {
+ font-family: 'cursive','fantasy','Courier','Georgia','メイリオ',sans-serif;
+}
+
+
+
+
   table.table th {
     white-space:nowrap;
  }
@@ -78,5 +86,23 @@
   background-image: image-url('map.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 1000px;
+  width: 80%;
+  height: 80vh;
+
 }
+
+.h1 {
+  font-family: "Allura";
+  color: #FFF80;
+  font-style: italic;
+}
+
+.mypage{
+
+  background-image: image-url('hongkong.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+

@@ -68,6 +68,8 @@ gem 'kaminari'
 
 gem 'rails_admin'
 
+gem 'rails-i18n'
+
 # gem 'jquery-rails'
 
 gem 'rinku'
