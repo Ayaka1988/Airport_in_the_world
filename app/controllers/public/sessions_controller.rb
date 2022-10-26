@@ -3,9 +3,14 @@
 class Public::SessionsController < Devise::SessionsController
   before_action :user_state, only: [:create]
 
-  def after_sign_in_path_for(resource)
-    user_mypage_path(current_user.id)
+
+  def after_sign_in_path_for(resource_or_scope)
+      stored_location_for(resource_or_scope) || super
   end
+
+  # def after_sign_in_path_for(resource)
+  #   user_mypage_path(current_user.id)
+  # end
 
   def after_sign_out_path_for(resource)
     root_path
@@ -23,5 +28,12 @@ class Public::SessionsController < Devise::SessionsController
     end
   end
 
+  private
+
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_in)
+    end
+
 
 end
+

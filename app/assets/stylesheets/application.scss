@@ -18,13 +18,6 @@
  *= require_self
  */
 
-body {
- font-family: 'cursive','fantasy','Courier','Georgia','メイリオ',sans-serif;
-}
-
-
-
-
   table.table th {
     white-space:nowrap;
  }
@@ -75,11 +68,40 @@ body {
 }
 
 
-.about-page {
+.about-page{
   background-image: image-url('airport.jpg');
+  // font-family: 'cursive','fantasy','Courier','Georgia','メイリオ', sans-serif;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  position: relative;
+}
+
+.about-page h1 {
+  color: #FFF;
+  text-shadow: #333 1px 0 10px;
+  // font-family: 'Fasthand', cursive;
+  font-family: 'Playball', cursive;
+  font-size:clamp(45px,7.5vw,95px);
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:100vw;
+  text-align:center;
+}
+
+@media screen and (min-width:480px) {
+  .about-page h1 .pcdn{
+    display:none;
+  }
+}
+
+.top-left {
+  position: absolute;
+  font-family: 'cursive','fantasy','Courier','Georgia','メイリオ', sans-serif;
+  font-color: #000080;
+
 }
 
 .map {
@@ -91,18 +113,29 @@ body {
 
 }
 
-.h1 {
-  font-family: "Allura";
-  color: #FFF80;
-  font-style: italic;
-}
 
 .mypage{
-
   background-image: image-url('hongkong.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-color:rgba(255,255,255,.4);
+  background-blend-mode:lighten;
   width: 100%;
   height: 100vh;
 }
 
+.mypage .table {
+    width: 50%;
+    color: #212529;
+    margin: 0 auto 1rem;
+}
+.mypage .pt-10{
+padding-top:10%;
+}
+
+.mypage .table thead th {
+  border-bottom: 1px solid #333;
+}
+.mypage .table th {
+  border-top: 1px solid #333;
+}

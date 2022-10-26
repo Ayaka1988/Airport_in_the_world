@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :store_user_location!, if: :storable_location?
 
   #adminアクセス制限
   before_action :authenticate_admin!, if: :admin_url
@@ -21,24 +21,35 @@ class ApplicationController < ActionController::Base
   end
 
   # ログイン後のリダイレクト先
-  def after_sign_in_path_for(resource)
-    case resource
-    when User
-      user_mypage_path
-    when Admin
-      admin_root_path
-    end
-
+  def after_sign_in_path_for(resource_or_scope)
+      stored_location_for(resource_or_scope) || super
   end
+
+  def after_sign_uo_path_for(resource_or_scope)
+      stored_location_for(resource_or_scope) || super
+  end
+
 
   #ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource)
-     posts_path
+     root_path
+  end
+
+  def after_sign_in_path_for(resource)
+    case resource
+    when Admin
+      admin_root_path
+    end
   end
 
   private
 
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up,keys:[:email])
+    def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
     end
+
+    def store_user_location!
+      store_location_for(:user, request.fullpath)
+    end
+
 end
