@@ -1,6 +1,6 @@
 <div class="container">
 <%= render 'layouts/errors', post: @post %>
-  
+
   <%= form_with model: @post, local: true do |f| %>
 
     <div class="row">
@@ -51,7 +51,7 @@
 
     <%= f.label :others, 'その他' %>
     <br>
-    <%= f.text_area :others, size: "100x10", placeholder: "SHOP情報やおすすめ情報など", class:'form-control' %>
+    <%= f.text_area :others, size: "80x10", placeholder: "SHOP情報やおすすめ情報など", class:'form-control' %>
     <br>
 
     <%= f.submit 'Have a safe flight !', class: 'btn btn-info btn-block' %>
