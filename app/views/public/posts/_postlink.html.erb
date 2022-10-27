@@ -2,13 +2,14 @@
   <div class="postlink">
     <p>Please give us<br>your information of airport!</p>
       <a class="navbar-brand" href="/posts/new"></a>
-      <%= link_to new_post_path, style:"font-size: 80px;", class:"text-dark" do %>
+      <%= link_to new_post_path, style:"font-size: 68px;", class:"text-dark" do %>
       <i class="fas fa-globe"></i>
       <% end %>
       <h4><%= link_to "Post here✈", new_post_path, style:"font-size: 40px;", class:"text-dark"%></h4>
       <br>
-      <br>
-      <% if current_user == nil %>
-      <p>投稿には<%= link_to "ログイン", new_user_session_path %>が必要です</p>
-      <% end %>
+      <div class="posts">
+        <% if current_user == nil %>
+        <p>投稿には<%= link_to "ログイン", new_user_session_path %>が必要です</p>
+        <% end %>
+      </div>
   </div>

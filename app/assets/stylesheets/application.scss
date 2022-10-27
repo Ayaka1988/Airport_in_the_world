@@ -129,7 +129,7 @@
   top: 78%;
   left: 30%;
   font-size:clamp(43px,7.0vw,40px);
-  font-family: 'Kiwi Maru', serif;
+  font-family: 'Kaisei Tokumin', serif;
   font-style: italic;
 }
 
@@ -174,7 +174,7 @@
   top: 83%;
   left: 44%;
   font-size:clamp(43px,7.0vw,52px);
-  font-family: 'Kiwi Maru', serif;
+  font-family: 'Kaisei Tokumin', serif;
   font-style: italic;
   color: #000033;
 }
@@ -190,6 +190,7 @@
   font-family: 'Oleo Script', cursive;
   font-size: 27px;
 }
+
 
 .mypage .table {
     width: 50%;
@@ -244,11 +245,14 @@
 .postlink {
   font-family: 'Oleo Script', cursive;
   margin-left: 0%;
-  margin-top: -12px;
+  margin-top: -28px;
   text-align:center;
 }
 .postlink p {
-  font-size: 25px;
+  font-size: 20px;
+}
+.posts p {
+  font-size: 16px;
 }
 
 .genreform {
@@ -259,4 +263,32 @@
 
 .comments {
   font-family: 'Oleo Script', cursive;
+}
+
+.contact{
+  background-image: image-url('sky.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto;
+  height: 90vh;
+  font-family: 'Oleo Script', cursive;
+  color: #000033;
+  padding-top: 8%;
+}
+
+.contact .table {
+    width: 50%;
+    color: #000033;
+    margin: 0 auto 1rem;
+    font-size: 30px;
+    color: #000033;
+}
+.contact h3 {
+  font-size: 40px;
+  margin-bottom: -20px;
+}
+
+.contact .btn {
+  color: #000033;
+  font-size: 22px;
 }

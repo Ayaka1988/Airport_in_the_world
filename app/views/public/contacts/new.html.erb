@@ -1,9 +1,6 @@
 
-  <div class="container">
-    <div class='row'>
-      <div class='col-md-4'></div>
-      <div class='col-md-8'>
-        <h3 class="my-4 mt-5">お問い合わせ︎</h3>
+  <div class="contact container-fluid">
+    <h3 class="contactnew pt-10 text-center">︎<strong︎>Contact</strong>&nbsp;<i class="fas fa-envelope"></i></h3>
         <%= form_with(model: @contact, local: true) do |f| %>
           <% if @contact.errors.any? %>
           <div id="error_explanation">
@@ -16,26 +13,28 @@
 
         <table class="table table-hover">
           <tr class="form-group">
-            <th><%= f.label "お名前" %></th>
+            <th><%= f.label "Your name" %></th>
             <th><%= f.text_field :name, placeholder: "お名前", class: "form-control" %></th>
           </tr>
           <tr class="form-group">
-            <th><%= f.label "お問合せ内容" %></th>
+            <th><%= f.label "Content" %></th>
             <th><%= f.text_area :content, size: "15x6", placeholder: "お問合せ内容を入力してください", class: "form-control" %></th>
           </tr>
-          <div class="send-btn-contents">
-            <th><%= f.button type: "submit", class: "btn btn-outline-info" do %>
-                  送信 <i class="fas fa-paper-plane"></i>
+          <br>
+          <div class="btn">
+          <tr>
+            <th><%= f.button type: "submit", class: "btn btn-outline-dark" do %>
+                  send <i class="fas fa-paper-plane"></i>
                 <% end %>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <%#= link_to "TOPへ", root_path, class:"register-red-btn", style:"background-color: #aaa" %>
-                <%= link_to "TOPへ戻る", root_path, class: "btn btn-outline-info" %>
             </th>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <th>
+                <%= link_to "TOP", root_path, class: "btn btn-outline-dark" %>
+            </th>
+          </tr>
           </div>
         </table>
         <% end %>
-      </div>
-    </div>
   </div>
 
 

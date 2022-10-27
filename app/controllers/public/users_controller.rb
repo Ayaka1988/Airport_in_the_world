@@ -30,7 +30,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(user_params)
     if @user.update(user_params)
-      flash[:notice] = "You have updated user successfully."
+      flash[:notice] = "You have updated successfully."
       redirect_to user_mypage_path(current_user)
     else
     render "edit"
