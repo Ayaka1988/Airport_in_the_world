@@ -1,10 +1,12 @@
   <!--検索フォーム-->
+  <div class="genreform">
   <%= form_with url: country_index_path, method: :get do |f| %>
+    <h3>You can select&nbsp;<i class="fas fa-clipboard-check"></i></h3>
     <table class="table">
       <tbody><tr></tr>
         <tr>
           <th>
-            <%= label_tag 'エリア選択' %>
+            <%= label_tag 'Area' %>
             <br>
             <select id="area_genre_ids" class="form-control">
             <option value="">選択してください</option>
@@ -16,11 +18,11 @@
         </tr>
         <tr>
           <th>
-            <%= label_tag 'カントリー選択' %>
+            <%= label_tag 'Country' %>
             <p id="message" class="d-block"></p>
             <select class="d-none form-control" name="country_id" id="post_genre_id"></select>
             <br>
-            <%= button_tag type: "submit", class: "btn btn-info" do %>
+            <%= button_tag type: "submit", class: "btn btn-info btn-lg" do %>
             Let's go travel <i class="fas fa-suitcase"></i>
             <% end %>
           </th>
@@ -28,6 +30,7 @@
       </tbody>
     </table>
   <% end %>
+  </div>
 
   <script>
  $(document).ready(function() {

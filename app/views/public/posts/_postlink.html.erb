@@ -1,11 +1,11 @@
 
-  <div class="postlink text-center">
-    <h6>Please give us<br>your information of airport!</h6>
+  <div class="postlink">
+    <p>Please give us<br>your information of airport!</p>
       <a class="navbar-brand" href="/posts/new"></a>
       <%= link_to new_post_path, style:"font-size: 80px;", class:"text-dark" do %>
       <i class="fas fa-globe"></i>
       <% end %>
-      <h4><%= link_to "Post here✈", new_post_path, class:"text-dark"%></h4>
+      <h4><%= link_to "Post here✈", new_post_path, style:"font-size: 40px;", class:"text-dark"%></h4>
       <br>
       <br>
       <% if current_user == nil %>

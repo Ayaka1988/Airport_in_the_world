@@ -1,26 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-2">
-      <h3 class="my-4 mt-5">登録情報編集✈︎</h3>
+  <div class="editpage container-fluid">
+    <h3 class="editmy pt-10 text-center">︎<strong>Edit your informatio︎︎n</strong></h3>
 
       <%= form_with model: @user,url: user_mypage_path, method: :patch, local:true do |f| %>
         <table class="table table-hover">
           <tr class="form-group">
-            <th><%= f.label :"ユーザー名"%></th>
+            <th><%= f.label :"User name"%></th>
             <th><%= f.text_field :name, autofocus: true ,class: "form-control name" %></th>
           </tr>
           <tr class="form-group">
-            <th><%= f.label :"メールアドレス"%></th>
+            <th><%= f.label :"Mailaddress"%></th>
             <th><%= f.email_field :email,autofocus: true, class: "form-control email" %></th>
           </tr>
           <div class="text-center">
             <table class="table table-hover">
-              <th><%= f.submit "編集内容を保存", class: 'btn btn-info' %></th>
+              <th><%= f.submit "Save", class: 'btn btn-dark btn-lg' %></th>
               <th><%= render 'layouts/back' %></th>
             </table>
           </div>
         </table>
       <% end %>
-    </div>
   </div>
-</div>
