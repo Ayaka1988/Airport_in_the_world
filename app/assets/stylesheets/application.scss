@@ -18,6 +18,26 @@
  *= require_self
  */
 
+  body {
+    font-family: 'Playball', cursive;
+  }
+
+  footer {
+    // font-family: 'Train One', cursive;
+    font-family: 'Playball', cursive;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    font-size: 18px;
+  }
+
+  header {
+    // font-family: 'Train One', cursive;
+    font-family: 'Playball', cursive;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+  }
+
   table.table th {
     white-space:nowrap;
  }
@@ -75,14 +95,23 @@
   background-size: cover;
   height: 100vh;
   position: relative;
+  animation: about-page-anim 2.0s;
 }
+@keyframes about-page-anim {
+   0%{
+       width: 0%;
+     }
+   100%{
+       width: 100%;
+     }
+  }
+
 
 .about-page h1 {
   color: #FFF;
   text-shadow: #333 1px 0 10px;
-  // font-family: 'Fasthand', cursive;
   font-family: 'Playball', cursive;
-  font-size:clamp(45px,7.5vw,95px);
+  font-size:clamp(45px,7.5vw,98px);
   position: absolute;
   top: 22%;
   left: 50%;
@@ -95,6 +124,17 @@
   .about-page h1 .pcdn{
     display:none;
   }
+}
+
+.about-text h2 {
+  color: #FFF;
+  position: absolute;
+  top: 78%;
+  left: 30%;
+  font-size:clamp(43px,7.0vw,40px);
+  font-family: 'Kiwi Maru', serif;
+  font-style: italic;
+
 }
 
 .top-left {
@@ -130,12 +170,12 @@
     margin: 0 auto 1rem;
 }
 .mypage .pt-10{
-padding-top:10%;
+  padding-top:10%;
 }
 
 .mypage .table thead th {
-  border-bottom: 1px solid #333;
+  border-bottom: 2px solid #333;
 }
 .mypage .table th {
-  border-top: 1px solid #333;
+  border-top: 2px solid #333;
 }
