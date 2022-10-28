@@ -8,7 +8,7 @@ class Public::CommentsController < ApplicationController
       comment.save
       redirect_to post_path(post)
     else
-      flash[:notice]="ログインが必要です"
+      flash[:notice]="Please login"
       redirect_to new_user_session_path
     end
   end

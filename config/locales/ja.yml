@@ -25,8 +25,6 @@ ja:
       number: 数字指定
       contains: 部分一致
       is_exactly: 完全一致
-      starts_with: 文字列の先頭指定
-      ends_with: 文字列の末尾指定
     loading: 読み込み中...
     home:
       name: ホーム
@@ -47,8 +45,6 @@ ja:
       chosen: "選択中: %{name}"
       chose_all: 全て選択
       clear_all: 全てクリア
-      up: Up
-      down: Down
       navigation: ナビゲーション
       navigation_static_label: リンク
       log_out: ログアウト
@@ -64,7 +60,7 @@ ja:
       last_created: 最終作成
       last_used: 最終更新
       records: レコード
-      username: ユーザ
+      username: ユーザー
       changes: 変更
       created_at: 日時
       item: アイテム
@@ -159,3 +155,9 @@ ja:
         default_col_sep: ","
         col_sep: カラム区切り文字
         col_sep_help: "空白にすると標準の '%{value}' になります。" # value is default_col_sep
+
+  activerecord:
+    attributes:
+      post:
+        airport_name: 空港名
+        genre: エリア

@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3 mt-5 ml-2 mr-5">
+
       <!--画像-->
       <div class="img mb-10">
       <% if @post.image.attached? %>
@@ -12,7 +13,8 @@
     </div>
     <!--空港情報-->
     <div class="col-md-6 mt-5 ml-2 text-center">
-    <%#= stylesheet_link_tag 'public/posts' %>
+     <%= render 'public/shared/flash' %>
+
       <div class="info">
         <table class="table">
           <thead class="thead-dark">

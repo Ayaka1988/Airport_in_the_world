@@ -8,7 +8,7 @@ class Public::ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.contact_mail(@contact, current_user).deliver
-      redirect_to posts_path, notice: 'Take off'
+      redirect_to root_path, notice: 'Your message was successfully sent!'
     else
       render :new
     end

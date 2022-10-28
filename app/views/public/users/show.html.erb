@@ -1,6 +1,6 @@
 
   <div class="mypage container-fluid">
-    <%= flash[:notice] %>
+    <%= render 'public/shared/flash' %>
     <h3 class="usershow pt-10 text-center">︎<strong>My pag︎︎e︎</strong></h3>
       <table class="table table-hover">
       <% if @user == current_user %>

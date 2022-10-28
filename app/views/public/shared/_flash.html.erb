@@ -1,0 +1,11 @@
+<div class="flashmassege">
+  <% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: key %>
+  <% end %>
+</div>
+
+<script>
+  $(function(){
+  setTimeout("$('.notice').fadeOut('slow')", 2500);
+  });
+</script>

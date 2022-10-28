@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
 
-  before_action :correct_user, only: [:edit, :update, :destroy, :create]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
 
   def index
     @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
@@ -16,6 +16,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      flash[:notice] = "Thank you for your posting!"
       redirect_to posts_path
     else
       @genres = Genre.find_by(ancestry: nil).children
@@ -28,7 +29,7 @@ class Public::PostsController < ApplicationController
       @post = Post.new
       @genres = Genre.find_by(ancestry: nil).children
     else
-      flash[:notice]="ログインが必要です"
+      flash[:notice]= "Please login"
       redirect_to new_user_session_path
     end
   end
@@ -55,7 +56,9 @@ class Public::PostsController < ApplicationController
     @posts = Post.all
     @post =Post.find(params[:id])
     @post.destroy
+     flash[:notice] = "You have deleted successfully"
      redirect_to posts_path(@post.id)
+
   end
 
   #選択された親カテゴリーに紐付く子カテゴリーを抽出
@@ -85,12 +88,12 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:airport_name, :open_hour, :sleep_space, :security, :url, :others, :genre_id, :image).merge(user_id: current_user.id)
   end
 
-  def correct_user
-    @post = Post.find(params[:id])
+  # def correct_user
+  #   @post = Post.find(params[:id])
 	 # if @post.user_id != current_user(params[:user_id])
 		#   flash[:notice] = "You do not have authority"
 		# redirect_back(fallback_location: root_path)
 	 # end
-  end
+
 
 end

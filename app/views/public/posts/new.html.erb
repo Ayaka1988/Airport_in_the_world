@@ -1,6 +1,6 @@
 <div class="container">
-<%= render 'layouts/errors', post: @post %>
-
+<%= render 'public/shared/flash' %>
+<%= render 'public/posts/errors', post: @post %>
   <%= form_with model: @post, local: true do |f| %>
 
     <div class="row">
