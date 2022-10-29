@@ -15,7 +15,7 @@ class Public::HomesController < ApplicationController
   @user = User.find(params[:id])
   @user.update(is_valid: false) #falseにすることで退会済に変更
   reset_session
-  redirect_to
+  redirect_to root_path
   end
 
 private
