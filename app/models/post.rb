@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user, foreign_key: 'user_id'
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :tags
   # has_many :post_genres
   # has_many :genres, through: :post_genres
   has_one_attached :image

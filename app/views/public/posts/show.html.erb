@@ -10,6 +10,11 @@
        <%= image_tag asset_path('no.jpg'), size: "200x120" %>
       <% end %>
       </div>
+      <div class="tag-box">
+      <% @post.tags.each do |tag| %>
+      <span class="label"><%= tag.name %></span>
+     <% end %>
+      </div>
     </div>
     <!--空港情報-->
     <div class="col-md-6 mt-5 ml-2 text-center">
