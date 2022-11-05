@@ -98,7 +98,9 @@ ActiveRecord::Schema.define(version: 2022_11_03_050108) do
     t.integer "user_id", null: false
     t.string "open_hour"
     t.text "sleep_space"
+    t.string "access"
     t.string "security"
+    t.string "wifi"
     t.string "url"
     t.text "others"
     t.datetime "created_at", precision: 6, null: false

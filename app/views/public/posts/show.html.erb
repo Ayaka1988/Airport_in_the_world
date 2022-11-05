@@ -50,6 +50,10 @@
                 <td><%= safe_join(@post.security.split("\n"),tag(:br)) %></td>
               </tr>
               <tr>
+                <th scope="row">Wi-Fi</th>
+                <td><%= safe_join(@post.wifi.split("\n"),tag(:br)) %></td>
+              </tr>
+              <tr>
                 <th scope="row">URL</th>
                 <td><% if @post.url.nil? %>
                       <%= @post.url %>
@@ -57,6 +61,10 @@
                       <%= Rinku.auto_link(@post.url, :all, 'target="_blank"').html_safe %>
                     <% end %>
                 </td>
+              </tr>
+              <tr>
+                <th scope="row">市内までのアクセス</th>
+                <td><%= safe_join(@post.access.split("\n"),tag(:br)) %></td>
               </tr>
               <tr>
                 <th scope="row">その他</th>

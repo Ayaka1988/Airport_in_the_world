@@ -89,7 +89,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:airport_name, :open_hour, :sleep_space, :security, :url, :others, :genre_id, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:airport_name, :open_hour, :sleep_space, :access, :security, :url, :wifi, :others, :genre_id, :image).merge(user_id: current_user.id)
   end
 
   # def correct_user

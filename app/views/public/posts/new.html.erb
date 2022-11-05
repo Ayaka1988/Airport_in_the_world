@@ -41,12 +41,22 @@
 
     <%= f.label :security, '治安' %>
     <br>
-    <%= f.text_field :security, placeholder: "4.0点/5.0点中、スリに注意",class:'form-control' %>
+    <%= f.text_field :security, placeholder: "人が多くスリには注意",class:'form-control' %>
+    <br>
+
+    <%= f.label :wifi, 'Wi-Fi' %>
+    <br>
+    <%= f.text_field :wifi, placeholder: "登録２時間制",class:'form-control' %>
     <br>
 
     <%= f.label :url,'URL' %>
     <br>
     <%= f.text_field :url, placeholder: "空港サイトのURLなどにお使いください", class:'form-control' %>
+    <br>
+
+    <%= f.label :access,'市内までのアクセス' %>
+    <br>
+    <%= f.text_field :access, placeholder: "バス情報や電車情報", class:'form-control' %>
     <br>
 
     <%= f.label :others, 'その他' %>
