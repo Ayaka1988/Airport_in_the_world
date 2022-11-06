@@ -40,10 +40,12 @@
 * その投稿に対して、新しい情報などを別のユーザーがコメントすることができる。
 
 ## 設計書
-* 実装機能リスト：https://docs.google.com/spreadsheets/d/1vLxueJJ_b1TU8ON3nVlwWqmt4EL-Ys9YWSedITmL54s/edit?usp=sharing
-* ER図URL：
-* テーブル定義書
-* 設計書
+* 要件定義書: https://docs.google.com/spreadsheets/d/11HDyGaiPF-BUj5ZjkYRjwFIbL1-ExkJHrzHDrLkvlNo/edit#gid=0
+* 実装機能リスト: https://docs.google.com/spreadsheets/d/1vLxueJJ_b1TU8ON3nVlwWqmt4EL-Ys9YWSedITmL54s/edit?usp=sharing
+* ER図URL：https: //app.diagrams.net/#G1kw2mUnc2nZFOAYPfids-99xVJ2bS2tFX
+* テーブル定義書: https://docs.google.com/spreadsheets/d/1jlzegQDFBW-d40c032FTrSDjI6-mz6zh/edit#gid=1243549839
+* 詳細設計書: https://docs.google.com/spreadsheets/d/1eFeAL0_iYAxbw4tVQeSWSv70shsyM3km4ii98p3AxIA/edit#gid=549108681
+* UI図: https://app.diagrams.net/#G1FRR1-6GThZciRh0mJRMsAdTwymyW9rMo
 
 ## 作者
 * 寺田彩可
