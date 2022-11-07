@@ -2,19 +2,17 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
 
-  #メール送信ができなかった場合、エラーを発生
-  config.action_mailer.raise_delivery_errors = true
-  #メール送信時は通信プロトコルSMTPを使用
+  config.action_mailer.default_url_options = {  host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                  587,
-    domain:               'gmail.com',
-    user_name:            'linkwood.1988@gmail.com',
-    password:             'linkwood0609',
-    authentication:       'plain',
-    enable_starttls_auto:  true
-   }
+    address: 'smtp.gmail.com',
+    domain: 'gmail.com',
+    port: 587,
+    user_name: Rails.application.credentials.gmail[:user_name],  #Gmailアドレス（credentials.yml.encに記載）
+    password: Rails.application.credentials.gmail[:password],  #アプリパスワード（credentials.yml.encに記載）
+    authentication: :login
+  }
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
