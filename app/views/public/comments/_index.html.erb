@@ -1,5 +1,4 @@
   <div class="comments">
-    <span class="title">comment✈</span>
     <table class="comment">
       <% post.comments.each do |comment| %>
         <tr>
@@ -11,10 +10,14 @@
         <tr>
           <td>
             <%= comment.reply %>
+          </td>
+        </tr>
+        <tr>
+          <td>
             <% if user_signed_in? && comment.user == current_user %>
-            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-outline-dark" %>
+            <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-outline-dark" %>
             <% end %>
-           </td>
+          </td>
         </tr>
       <% end %>
     </table>

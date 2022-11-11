@@ -5,7 +5,9 @@
       <!--画像-->
       <div class="img mb-10">
       <% if @post.image.attached? %>
-       <%= image_tag @post.image, size: "360x270" %>
+        <%= link_to @post.image, "data-lightbox": @post.image do %>
+          <%= image_tag @post.image, size: "360x270" %>
+        <% end %>
       <% else %>
        <%= image_tag asset_path('no.jpg'), size: "200x120" %>
       <% end %>
