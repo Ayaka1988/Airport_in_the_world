@@ -12,7 +12,8 @@
          <%= image_tag asset_path('no.jpg'), size: "200x120" %>
         <% end %>
       </div>
-      
+
+      <!--以下地図-->
       <div id="googlemap"></div>
       <div class="map-btn">
         <!-- 地名入力用のinputを追加 -->
@@ -29,11 +30,13 @@
             geocoder = new google.maps.Geocoder()
 
             map = new google.maps.Map(document.getElementById('googlemap'), {
-            center: {lat: 35.6803997, lng: 139.7690174}, //Tokyo
+            center: {lat: -34.397<%#= @post.latitude %>, lng: 150.644<%#= @post.longitude %>}, //Tokyo
+//            center: {lat: <%#= @post.latitude %>, lng: <%#= @post.longitude %>},
             zoom: 8
             });
             marker = new google.maps.Marker({
-              position: centerp,
+              position: {lat: -34.397<%#= @post.latitude %>, lng: 150.644<%#= @post.longitude %>},
+//
               map: map
             });
           }
@@ -59,7 +62,7 @@
             });
           }
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLXwWlgj2UMuVn6KeoYzCUc21zklaBfoA&callback=initMap" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&callback=initMap" async defer></script>
     </div>
 
 
@@ -134,6 +137,7 @@
         </table>
         <div class="back text-left mb-3">
         <%= render 'layouts/back' %>
+        <%#= link_to "back", class: "btn btn-outline-dark btn-sm" %>
         </div>
       </div>
     </div>

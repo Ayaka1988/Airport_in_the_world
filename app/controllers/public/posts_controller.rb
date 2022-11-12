@@ -10,6 +10,8 @@ class Public::PostsController < ApplicationController
   def show
     @post =Post.find(params[:id])
     @comment = Comment.new
+    # @latitude = 51.4700223
+    # @longitude = -0.4564842
   end
 
   def create
@@ -85,7 +87,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:airport_name, :open_hour, :sleep_space, :access, :security, :url, :wifi, :others, :genre_id, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:airport_name, :open_hour, :sleep_space, :access, :security, :url, :wifi, :others, :genre_id, :latitude, :longitude, :image).merge(user_id: current_user.id)
   end
 
   # def correct_user

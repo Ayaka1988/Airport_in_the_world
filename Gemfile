@@ -76,6 +76,8 @@ gem 'rinku'
 
 gem 'google_places'
 
+gem 'geocoder'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

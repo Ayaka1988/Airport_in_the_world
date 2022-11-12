@@ -10,6 +10,9 @@ class Post < ApplicationRecord
   validates :sleep_space, length: { maximum: 200 }
   validates :others, length: { maximum: 500 }
 
+  geocoded_by :airport_name
+  after_validation :geocode, if: :airport_name_changed?
+
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
   end
