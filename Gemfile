@@ -74,6 +74,8 @@ gem 'rails-i18n'
 
 gem 'rinku'
 
+gem 'google_places'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
