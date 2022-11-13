@@ -10,8 +10,6 @@ class Public::PostsController < ApplicationController
   def show
     @post =Post.find(params[:id])
     @comment = Comment.new
-    # @latitude = 51.4700223
-    # @longitude = -0.4564842
   end
 
   def create

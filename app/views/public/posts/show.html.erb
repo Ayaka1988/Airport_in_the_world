@@ -26,20 +26,29 @@
           let geocoder
 
           function initMap(){
-            // geocoderを初期化
             geocoder = new google.maps.Geocoder()
+            if(!navigator.geolocation) {
+              alert('Geolocation APIに対応していません');
+              return false;
+            }
+            navigator.geolocation.getCurrentPosition(function(position) {
+              latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-            map = new google.maps.Map(document.getElementById('googlemap'), {
-            center: {lat: -34.397<%#= @post.latitude %>, lng: 150.644<%#= @post.longitude %>}, //Tokyo
-//            center: {lat: <%#= @post.latitude %>, lng: <%#= @post.longitude %>},
-            zoom: 8
-            });
-            marker = new google.maps.Marker({
-              position: {lat: -34.397<%#= @post.latitude %>, lng: 150.644<%#= @post.longitude %>},
-//
-              map: map
-            });
+              map = new google.maps.Map(document.getElementById('googlemap'), {
+                center: latLng,
+                zoom: 8,
+              });
+
+              marker = new google.maps.Marker({
+                position:  latLng,
+                map: map
+              });
+
+              }, function() {
+                alert('位置情報取得に失敗しました');
+              });
           }
+
 
           function codeAddress(){
             // 入力を取得
@@ -137,7 +146,8 @@
         </table>
         <div class="back text-left mb-3">
         <%= render 'layouts/back' %>
-        <%#= link_to "back", class: "btn btn-outline-dark btn-sm" %>
+        <%= link_to "NEW", new_post_path, class: "btn btn-outline-dark btn-sm" %>
+        <%= link_to "TOP", root_path, class: "btn btn-outline-dark btn-sm" %>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-  <div class="comments">
+  <div class="comments <% if post.comments.count() > 0 %>comment-list<% end %>">
     <table class="comment">
       <% post.comments.each do |comment| %>
         <tr>
