@@ -88,12 +88,5 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:airport_name, :open_hour, :sleep_space, :access, :security, :url, :wifi, :others, :genre_id, :latitude, :longitude, :image).merge(user_id: current_user.id)
   end
 
-  # def correct_user
-  #   @post = Post.find(params[:id])
-	 # if @post.user_id != current_user(params[:user_id])
-		#   flash[:notice] = "You do not have authority"
-		# redirect_back(fallback_location: root_path)
-	 # end
-
 
 end
