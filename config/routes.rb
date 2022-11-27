@@ -32,7 +32,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => "homes#about"
+    get 'chat/:id' => 'chats#show', as: 'chat'
+    resources :chats, only: [:create, :destroy]
     resources :genres
+    resources :posters, only: [:show]
     resources :contacts, only: [:new, :create]
     get '/posts/country' => 'posts#country', as: 'country_index'
     resources :posts  do
@@ -47,6 +50,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show] do
       member do
       get :bookmarks
+      get :posted
       end
     end
 

@@ -3,13 +3,14 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
 
   def index
-    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
     @genres = Genre.find_by(ancestry: nil).children
   end
 
   def show
     @post =Post.find(params[:id])
     @comment = Comment.new
+    @user = @post.user
   end
 
   def create
@@ -35,7 +36,7 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    @post =Post.find(params[:id])
+    @post = Post.find(params[:id])
     @genres = Genre.find_by(ancestry: nil).children
     unless @post.user == current_user
     redirect_to  edit_post_path
@@ -43,7 +44,7 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    @post =Post.find(params[:id])
+    @post = Post.find(params[:id])
     if  @post.update(post_params)
       flash[:notice] = "You have update successfully "
       redirect_to post_path
@@ -55,10 +56,13 @@ class Public::PostsController < ApplicationController
   def destroy
     @posts = Post.all
     @post =Post.find(params[:id])
-    @post.destroy
+    if @post.is_my_post(params[:id], current_user.id)
+      @post.destroy
      flash[:notice] = "You have deleted successfully"
      redirect_to posts_path(@post.id)
-
+    else
+      redirect_to posts_path(@post.id)
+    end
   end
 
   #選択された親カテゴリーに紐付く子カテゴリーを抽出
@@ -72,7 +76,7 @@ class Public::PostsController < ApplicationController
 
   def search
     # @posts = Post.where(airport_name: params[:airport_name])
-    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(5)
+    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(10)
     @genres = Genre.find_by(ancestry: nil).children
   end
 

@@ -1,0 +1,36 @@
+ <div class="container">
+    <div class="row">
+      <div class="col-md-10 mt-5">
+
+        <h4><i class="fas fa-file-alt"></i>&ensp;投稿一覧</h4>
+        <% @posted.each do |post| %>
+        <table class="table table-hover table-inverse">
+          <tr>
+            <td class="table-img">
+              <% if post.image.attached? %>
+                <%= link_to post_path(post) do %>
+                <%= image_tag post.image, size: "200x120" %>
+                <% end %>
+              <% else %>
+                <%= link_to post_path(post) do %>
+                <%= image_tag asset_path('no.jpg'), size: "200x120" %>
+                 <% end %>
+              <% end %>
+            </td>
+            <td class="table-txt">
+              空港名：
+              <%= link_to post_path(post) do %>
+              <%= post.airport_name %>
+              <% end %><br>
+              カントリー : <%= post.genre.name %><br>
+              ユーザー名：<%= post.user.name %>
+            </td>
+          </tr>
+        </table>
+        <% end %>
+        <div class="back mr-4">
+        <%= render 'layouts/back' %>
+        </div>
+      </div>
+    </div>
+  </div>

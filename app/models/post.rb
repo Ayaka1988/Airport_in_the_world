@@ -13,6 +13,15 @@ class Post < ApplicationRecord
   geocoded_by :airport_name
   after_validation :geocode, if: :airport_name_changed?
 
+  def is_my_post(post_id, user_id)
+    post = Post.find(post_id)
+    if post.user_id == user_id
+      return true
+    else
+      return false
+    end
+  end
+
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
   end

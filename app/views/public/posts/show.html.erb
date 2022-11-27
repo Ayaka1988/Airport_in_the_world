@@ -131,7 +131,18 @@
               </tr>
               <tr>
                 <th scope="row">ユーザー</th>
-                <td><%= @post.user.name %><br><%= l @post.created_at %></td>
+
+                <td><% if @user != current_user %>
+                      <%=link_to poster_path(@user.id) do  %>
+                      <%= @post.user.name %>
+                      <% end %>
+                    <% end %>
+                    <% if @user == current_user %>
+                      <%= @post.user.name %>
+                    <% end %>
+                    <br>
+                    <%= l @post.created_at %>
+                </td>
               </tr>
               <tr>
               <% if @post.user == current_user %>
@@ -174,7 +185,6 @@
     </div>
   </div>
 </div>
-
 
 
 

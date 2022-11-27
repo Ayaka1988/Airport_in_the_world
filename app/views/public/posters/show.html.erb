@@ -1,0 +1,29 @@
+  <div class="poster container-fluid">
+    <%= render 'public/shared/flash' %>
+    <h3 class="poster pt-10 text-center"><%= @user.name %>さんのpage</h3>
+      <table class="table table-hover">
+      <%# if @user != current_user %>
+        <thead></thead>
+
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th><%= @user.name %>さんのPost</th>
+            <th><%= link_to "Click here" , posted_user_path(@user), class: "btn btn-sm btn-dark" %></th>
+          </tr>
+          <tr>
+            <th><%= @user.name %>さんとChat </th>
+            <th><%= link_to "Let's chat" , chat_path(@user.id), class: "btn btn-sm btn-dark" %></th>
+          </tr>
+          <tr>
+            <th>
+            </th>
+            <th> <%= render 'layouts/back' %></th>
+          </tr>
+        </tbody>
+      <%# end %>
+      </table>
+  </div>
