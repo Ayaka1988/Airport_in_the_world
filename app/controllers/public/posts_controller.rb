@@ -55,13 +55,13 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @posts = Post.all
-    @post =Post.find(params[:id])
+    @post = Post.find(params[:id])
     if @post.is_my_post(params[:id], current_user.id)
       @post.destroy
      flash[:notice] = "You have deleted successfully"
-     redirect_to posts_path(@post.id)
+     redirect_to posts_path
     else
-      redirect_to posts_path(@post.id)
+      redirect_to posts_path#(@post.id)
     end
   end
 

@@ -47,6 +47,11 @@ class Public::UsersController < ApplicationController
     @posted = Post.includes(:user).where(user_id:params[:id]).page(params[:page]).per(5)
   end
 
+  def mychat
+    @user = User.find(params[:id])
+    rooms = current_user.user_rooms.pluck(:room_id)
+    @user_rooms = UserRoom.where(room_id: rooms).where.not(user_id: current_user.id)
+  end
 
   def unsubscribe
     @user = User.find(params[:id])

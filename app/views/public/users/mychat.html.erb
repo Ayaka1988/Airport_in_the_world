@@ -1,0 +1,26 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 mt-5">
+
+        <table>
+          <thead>
+            <tr>
+              <h4><i class="fab fa-rocketchat"></i>&ensp;chat一覧</h4>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% @user_rooms.each do |user_room| %>
+                <%= link_to chat_path(@user.id) do %>
+                <%= user_room.user.name %>さんとのchat
+                <% end %>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+      </div>
+    </div>
+  </div>

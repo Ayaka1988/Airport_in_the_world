@@ -29,6 +29,10 @@
             <th><%= link_to "Click here" , bookmarks_user_path(@user), class: "btn btn-sm btn-dark" %></th>
           </tr>
           <tr>
+            <th><%= @user.name %>さんのChat room</th>
+            <th><%=link_to "chat", mychat_user_path(@user), class: "btn btn-sm btn-dark" %></th>
+          </tr>
+          <tr>
             <th><% if @user.name != "guestuser" %>
                 <%= link_to "退会する" , unsubscribe_path, class: 'btn btn-outline-dark' %>
                 <% end %>

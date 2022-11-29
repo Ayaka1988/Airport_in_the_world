@@ -1,26 +1,26 @@
-<div class="container-fluid">
-  <div class="row">
+  <div class="container-fluid">
+    <div class="row">
 
-    <div class="col-md-3 mt-5 ml-2 mr-5">
-      <!--画像-->
-      <div class="img mb-10">
-        <% if @post.image.attached? %>
-          <%= link_to @post.image, "data-lightbox": @post.image do %>
-            <%= image_tag @post.image, size: "360x270" %>
+      <div class="col-md-3 col-sm-4 col-xs-12 mt-5 ml-2 mr-5">
+        <!--画像-->
+        <div class="img mb-10">
+          <% if @post.image.attached? %>
+            <%= link_to @post.image, "data-lightbox": @post.image do %>
+              <%= image_tag @post.image, size: "360x270" %>
+            <% end %>
+          <% else %>
+           <%= image_tag asset_path('no.jpg'), size: "200x120" %>
           <% end %>
-        <% else %>
-         <%= image_tag asset_path('no.jpg'), size: "200x120" %>
-        <% end %>
-      </div>
+        </div>
 
-      <!--以下地図-->
-      <div id="googlemap"></div>
-      <div class="map-btn">
-        <!-- 地名入力用のinputを追加 -->
-        <input id="address" type="textbox" value="<%= @post.airport_name %>">
-        <!-- buttonをクリックしたらcodeAddressを実行　-->
-        <input type="button" button class="btn btn-outline-dark btn-sm" value="Research" onclick="codeAddress()">
-      </div>
+        <!--以下地図-->
+        <div id="googlemap"></div>
+        <div class="map-btn">
+          <!-- 地名入力用のinputを追加 -->
+          <input id="address" type="textbox" value="<%= @post.airport_name %>">
+          <!-- buttonをクリックしたらcodeAddressを実行　-->
+          <input type="button" button class="btn btn-outline-dark btn-sm" value="Research" onclick="codeAddress()">
+        </div>
         <script>
           let map
           let geocoder
@@ -72,119 +72,120 @@
           }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&callback=initMap" async defer></script>
-    </div>
+      </div>
 
 
-    <!--空港情報-->
-    <div class="col-md-6 mt-5 ml-2 text-center">
-     <%= render 'public/shared/flash' %>
+      <!--空港情報-->
+      <div class="col-md-6 col-sm-4 col-xs-12 mt-5 ml-2 text-center">
+      <%= render 'public/shared/flash' %>
 
-      <div class="info">
-        <table class="table">
-          <thead class="thead-dark">
+        <div class="table-responsive"><!--"info"-->
+          <table class="table">
+            <thead class="thead-dark">
             <tr>
-              <th><i class="fas fa-info-circle fa-lg"></i>︎</th>
-              <th scope="col">Airport information</th>
+              <th scope="row"><i class="fas fa-info-circle fa-lg"></i>︎</th>
+              <th scope="row">Airport information</th>
             </tr>
           </thead>
           <tbody>
-              <tr>
-                <th scope="row">空港名</th>
-                <td><%= @post.airport_name %></td>
-              </tr>
-              <tr>
-                <th scope="row">エリア</th>
-                <td><%= @post.genre.parent.name %>&emsp;✈&emsp;<%= @post.genre.name %></td>
-              </tr>
-              <tr>
-                <th scope="row">営業時間</th>
-                <td><%= safe_join(@post.open_hour.split("\n"),tag(:br)) %></td>
-              </tr>
-              <tr>
-                <th scope="row">仮眠<br>スペース</th>
-                <td><%= safe_join(@post.sleep_space.split("\n"),tag(:br)) %></td>
-              </tr>
-              <tr>
-                <th scope="row">治安</th>
-                <td><%= safe_join(@post.security.split("\n"),tag(:br)) %></td>
-              </tr>
-              <tr>
-                <th scope="row">Wi-Fi</th>
-                <td><%= safe_join(@post.wifi.split("\n"),tag(:br)) %></td>
-              </tr>
-              <tr>
-                <th scope="row">URL</th>
-                <td><% if @post.url.nil? %>
-                      <%= @post.url %>
-                    <% else %>
-                      <%= Rinku.auto_link(@post.url, :all, 'target="_blank"').html_safe %>
-                    <% end %>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">市内までのアクセス</th>
-                <td><%= safe_join(@post.access.split("\n"),tag(:br)) %></td>
-              </tr>
-              <tr>
-                <th scope="row">その他</th>
-                <td><%= safe_join(@post.others.split("\n"),tag(:br)) %></td>
-              </tr>
-              <tr>
-                <th scope="row">ユーザー</th>
-
-                <td><% if @user != current_user %>
-                      <%=link_to poster_path(@user.id) do  %>
-                      <%= @post.user.name %>
-                      <% end %>
-                    <% end %>
-                    <% if @user == current_user %>
-                      <%= @post.user.name %>
-                    <% end %>
-                    <br>
-                    <%= l @post.created_at %>
-                </td>
-              </tr>
-              <tr>
+            <tr>
+              <th scope="row">空港名</th>
+              <td scope="col"><%= @post.airport_name %></td>
+            </tr>
+            <tr>
+              <th scope="row">エリア</th>
+              <td scope="col"><%= @post.genre.parent.name %>&emsp;✈&emsp;<%= @post.genre.name %></td>
+            </tr>
+            <tr>
+              <th scope="row">営業時間</th>
+              <td scope="col"><%= safe_join(@post.open_hour.split("\n"),tag(:br)) %></td>
+            </tr>
+            <tr>
+              <th scope="row">仮眠<br>スペース</th>
+              <td scope="col"><%= safe_join(@post.sleep_space.split("\n"),tag(:br)) %></td>
+            </tr>
+            <tr>
+              <th scope="row">治安</th>
+              <td scope="col"><%= safe_join(@post.security.split("\n"),tag(:br)) %></td>
+            </tr>
+            <tr>
+              <th scope="row">Wi-Fi</th>
+              <td scope="col"><%= safe_join(@post.wifi.split("\n"),tag(:br)) %></td>
+            </tr>
+            <tr>
+              <th scope="row">URL</th>
+              <td scope="col">
+                <% if @post.url.nil? %>
+                  <%= @post.url %>
+                <% else %>
+                  <%= Rinku.auto_link(@post.url, :all, 'target="_blank"').html_safe %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">市内までのアクセス</th>
+              <td scope="col"><%= safe_join(@post.access.split("\n"),tag(:br)) %></td>
+            </tr>
+            <tr>
+              <th scope="row">その他</th>
+              <td scope="col"><%= safe_join(@post.others.split("\n"),tag(:br)) %></td>
+            </tr>
+            <tr>
+              <th scope="row">ユーザー</th>
+              <td scope="col">
+                <% if @user != current_user %>
+                  <%=link_to poster_path(@user.id) do  %>
+                  <%= @post.user.name %>
+                  <% end %>
+                <% end %>
+                <% if @user == current_user %>
+                  <%= @post.user.name %>
+                <% end %>
+                <br>
+                <%= l @post.created_at %>
+              </td>
+            </tr>
+            <tr>
               <% if @post.user == current_user %>
-                <th scope="row"></th>
-                <td>
-                  <%= link_to "投稿を編集", edit_post_path, class:"btn btn-info" %>&nbsp;&emsp;<i class="fas fa-globe fa-lg"></i>&emsp;
-                  <%= link_to "投稿を削除", post_path(@post.id), class:"btn btn-outline-dark", method: :delete, "data-confirm" => "本当に削除しますか？" %>
-                </td>
+              <th scope="row"></th>
+              <td scope="col">
+                <%= link_to "投稿を編集", edit_post_path, class:"btn btn-info" %>&nbsp;&emsp;<i class="fas fa-globe fa-lg"></i>&emsp;
+                <%= link_to "投稿を削除", post_path(@post.id), class:"btn btn-outline-dark", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+              </td>
               <% end %>
               </tr>
-          </tbody>
-        </table>
-        <div class="back text-left mb-3">
-        <%= render 'layouts/back' %>
-        <%= link_to "NEW", new_post_path, class: "btn btn-outline-dark btn-sm" %>
-        <%= link_to "TOP", root_path, class: "btn btn-outline-dark btn-sm" %>
+            </tbody>
+          </table>
+          <div class="back text-left mb-3">
+          <%= render 'layouts/back' %>
+          <%= link_to "NEW", new_post_path, class: "btn btn-outline-dark btn-sm" %>
+          <%= link_to "TOP", root_path, class: "btn btn-outline-dark btn-sm" %>
+          </div>
         </div>
       </div>
-    </div>
 
 
-    <div class="col-md-2 mt-5 ml-4 text-center">
-      <div class="mb-10" style="color: naby;">
-        <div id="bookmarks_buttons_<%= @post.id %>">
+      <div class="col-md-2 col-sm-4 col-xs-12 mt-5 ml-4 text-center">
+        <div class="mb-10" style="color: naby;">
+          <div id="bookmarks_buttons_<%= @post.id %>">
           <%= render "public/bookmarks/bookmarks", post: @post %>
+          </div>
         </div>
-      </div>
         <br>
         <br>
-      <div >
-        <h5 class style="comment">コメント件数：<%= @post.comments.count %></h5>
-        <br>
+        <div >
+          <h5 class style="comment">コメント件数：<%= @post.comments.count %></h5>
+          <br>
           <!--部分テンプレート：コメントフォーム-->
           <%= render 'public/comments/form', post: @post, comment: @comment %>
           <br>
           <br>
           <!--部分テンプレート：コメント一覧部分-->
           <%= render 'public/comments/index', post: @post %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
 

@@ -32,8 +32,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => "homes#about"
-    get 'chat/:id' => 'chats#show', as: 'chat'
-    resources :chats, only: [:create, :destroy]
+    resources :chats, only: [:create, :destroy, :show]
     resources :genres
     resources :posters, only: [:show]
     resources :contacts, only: [:new, :create]
@@ -51,6 +50,7 @@ Rails.application.routes.draw do
       member do
       get :bookmarks
       get :posted
+      get :mychat
       end
     end
 
