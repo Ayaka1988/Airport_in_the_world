@@ -1,0 +1,28 @@
+<%= form_with model: @chat do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :room_id %>
+    <%= f.submit %>
+<% end %>
+<table>
+    <thead>
+        <tr>
+            <td>投稿者名</td>
+            <td>投稿内容</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @chats.each do |chat| %>
+            <tr>
+                <td><%= chat.user.name %></td>
+                <td><%= chat.message %></td>
+                <td><%= l chat.created_at %></td>
+                <td><% if chat.user == current_user %>
+                      <%= link_to "Delete", chat_path(chat.id), method: :delete, class: "btn btn-sm btn-outline-dark" %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

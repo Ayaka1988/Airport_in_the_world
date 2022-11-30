@@ -11,8 +11,11 @@
           <tbody>
             <tr>
               <% @user_rooms.each do |user_room| %>
-                <%= link_to chat_path(@user.id) do %>
-                <%= user_room.user.name %>さんとのchat
+                <%= link_to user_room_path(user_room.room.id) do %>
+                <div>
+                  <%= user_room.user.name %>さんとのchat
+                </div>
+
                 <% end %>
               <% end %>
             </tr>

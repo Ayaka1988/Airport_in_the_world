@@ -11,6 +11,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user = current_user
     @post = @user.posts
+    # @user_room = UserRoom.find(params[:id])
   end
 
 

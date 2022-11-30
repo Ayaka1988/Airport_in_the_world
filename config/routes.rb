@@ -33,6 +33,18 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => "homes#about"
     resources :chats, only: [:create, :destroy, :show]
+    resources :rooms
+    get 'user_rooms/:id' => 'user_rooms#show', as: 'user_room'
+
+
+
+    # users_controller
+    # def mychats
+    #   @user_rooms = ~~
+    #   @user_rooms.first.id
+    # end
+
+
     resources :genres
     resources :posters, only: [:show]
     resources :contacts, only: [:new, :create]
