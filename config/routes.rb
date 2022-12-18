@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   #ユーザー用
   #URL/users/sign_in...
@@ -37,14 +41,6 @@ Rails.application.routes.draw do
     get 'user_rooms/:id' => 'user_rooms#show', as: 'user_room'
 
 
-
-    # users_controller
-    # def mychats
-    #   @user_rooms = ~~
-    #   @user_rooms.first.id
-    # end
-
-
     resources :genres
     resources :posters, only: [:show]
     resources :contacts, only: [:new, :create]
@@ -64,6 +60,9 @@ Rails.application.routes.draw do
       get :posted
       get :mychat
       end
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
 
 

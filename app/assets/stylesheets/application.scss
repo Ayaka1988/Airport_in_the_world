@@ -39,6 +39,11 @@
     font-size: 5px;
   }
 
+  header .navbar-nav {
+    margin-left: auto;
+  }
+
+
   table.table th {
     white-space:nowrap;
  }
@@ -126,10 +131,12 @@
   font-style: italic;
 }
 
+//topページ
 .map {
   background-image: image-url('map.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
   width: 80%;
   height: 80vh;
   animation-name: mapAnime;
@@ -149,22 +156,26 @@
 }
 
 .map h1{
-  // font-family: 'Playball', cursive;
   font-family: 'Oleo Script', cursive;
   font-size:clamp(55px,7.5vw,100px);
-  position: absolute;
-  top: 18%;
-  left: 59%;
-  transform: translate(-50%, -50%);
-  width:100vw;
+  // position: absolute;
+  // top: 18%;
+  // left: 59%;
+  // transform: translate(-50%, -50%);
+  width:80vw;
   text-align:center;
   letter-spacing: 0.04em;
   color: #000033;
 }
+@media screen and (max-width: 480px) {
+  .map h1 {
+
+  }
+}
 
 .map h2{
   position: absolute;
-  top: 83%;
+  top: 73%;
   left: 44%;
   font-size:clamp(43px,7.0vw,52px);
   font-family: 'Kaisei Tokumin', serif;
@@ -173,79 +184,46 @@
 }
 
 .poster {
-  background-image: image-url('hongkong.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color:rgba(255,255,255,.4);
-  background-blend-mode:lighten;
-  width: 100%;
-  height: 100vh;
   font-family: 'Oleo Script', cursive;
   font-size: 27px;
-
 }
 
-.poster .table {
-  width: 50%;
-  color: #212529;
-  margin: 0 auto 1rem;
-
-}
 .poster .pt-10 {
-  padding-top: 10%;
+  padding-top: 13px;
 }
-
-.poster .table thead th {
-  border-bottom: 2px solid #333;
+.poster .under {
+  margin: 0 auto;
+  padding-top: 40px;
 }
-
-.poster .table th {
-  border-top: 2px solid #333;
-}
-
 .poster h3 {
   font-size: 40px;
+  padding-bottom: 20px;
+
+}
+.poster .noimg {
+  margin-top: 40px;
 }
 
-.mypage{
-  background-image: image-url('hongkong.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color:rgba(255,255,255,.4);
-  background-blend-mode:lighten;
-  width: 100%;
-  height: 100vh;
+.mypage {
   font-family: 'Oleo Script', cursive;
   font-size: 27px;
 }
 
-.mypage .table {
-    width: 50%;
-    color: #212529;
-    margin: 0 auto 1rem;
-}
-.mypage .pt-10 {
-  padding-top: 10%;
+.mypage .under {
+  margin: 0 auto;
+  padding-top: 40px;
 }
 
-.mypage .table thead th {
-  border-bottom: 2px solid #333;
-}
-.mypage .table th {
-  border-top: 2px solid #333;
-}
 .mypage h3 {
-  font-size: 40px;
+  font-size: 50px;
+  padding-bottom: 10px;
+}
+
+.mypage .noimg {
+  margin-top: 40px;
 }
 
 .editpage {
-  background-image: image-url('hongkong.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color:rgba(255,255,255,.4);
-  background-blend-mode:lighten;
-  width: 100%;
-  height: 100vh;
   font-family: 'Oleo Script', cursive;
   font-size: 30px;
 }
@@ -255,14 +233,13 @@
     color: #212529;
     margin: 0 auto 1rem;
 }
- .editpage .table thead th {
-  border-bottom: 2px solid #333;
+
+.editpage .myimg {
+  font-size: 20px;
 }
-.editpage .table th {
-  border-top: 2px solid #333;
-}
+
 .editpage .pt-10 {
-  padding-top: 15%;
+  padding-top: 6%;
 }
 
 .editpage h3 {

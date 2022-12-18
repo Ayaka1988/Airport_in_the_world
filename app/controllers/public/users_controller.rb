@@ -11,7 +11,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user = current_user
     @post = @user.posts
-    # @user_room = UserRoom.find(params[:id])
   end
 
 
@@ -76,9 +75,18 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def get_profile_image
+    if profile_image.attached?
+      profile_image
+    else
+      'noimage.png'
+    end
+  end
+
+
 
   def user_params
-    params.require(:user).permit(:email, :name)
+    params.require(:user).permit(:email, :name, :profile_image)
   end
 end
 

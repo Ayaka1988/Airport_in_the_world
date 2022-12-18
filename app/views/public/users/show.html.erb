@@ -1,48 +1,57 @@
 
-  <div class="mypage container-fluid">
-    <%= render 'public/shared/flash' %>
-    <h3 class="usershow pt-10 text-center">︎<strong>My pag︎︎e︎</strong></h3>
-      <table class="table table-hover">
-      <% if @user == current_user %>
-        <thead>
-          <th>Information</th>
-          <th><% if @user.name != "guestuser" %>
-              <%= link_to 'Edit', mypage_edit_path, class: "btn btn-sm btn-dark" %>
+
+    <div class="mypage">
+      <div class="mypage-body">
+        <div class="text-center">
+          <% if @user == current_user %>
+          <%= render 'public/shared/flash' %>
+            <div class="noimg">
+              <% if @user.profile_image.attached? %>
+                <%= image_tag @user.profile_image, size: "200x200" %>
+              <% else %>
+                <%= image_tag asset_path('noimg.png'), size: "200x200", class:"rounded-circle m-t-15 w-75px" %>
               <% end %>
-          </th>
-        </thead>
-        <tbody>
-          <tr>
-            <th>UserID</th>
-            <th><%= @user.id %></th>
-          </tr>
-          <tr>
-            <th>Name</th>
-            <th><%= @user.name %></th>
-          </tr>
-          <tr>
-            <th>Mailaddress</th>
-            <th><%= @user.email %></th>
-          </tr>
-          <tr>
-            <th><%= @user.name %>さんのPost&ensp;/&ensp;Bookmark </th>
-            <th><%= link_to "Click here" , bookmarks_user_path(@user), class: "btn btn-sm btn-dark" %></th>
-          </tr>
-          <tr>
-            <th><%= @user.name %>さんのChat room</th>
-            <th><%=link_to "chat", mychat_user_path(@user), class: "btn btn-sm btn-dark" %></th>
-          </tr>
-          <tr>
-            <th><% if @user.name != "guestuser" %>
-                <%= link_to "退会する" , unsubscribe_path, class: 'btn btn-outline-dark' %>
-                <% end %>
-            </th>
-            <th> <%= render 'layouts/back' %></th>
-          </tr>
-        </tbody>
-      <% end %>
-      </table>
-  </div>
+            </div>
+            <h3 class="m-t-15 m-b-2">My page</h3>
+
+            <!--<ul class="list-inline m-t-15">-->
+            <!--    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook-square f-s-20 text-muted"></i></a>-->
+            <!--    </li>-->
+            <!--    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter f-s-20 text-muted"></i></a>-->
+            <!--    </li>-->
+            <!--    <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest f-s-20 text-muted"></i></a>-->
+            <!--    </li>-->
+            <!--    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin f-s-20 text-muted"></i></a>-->
+            <!--    </li>-->
+            <!--</ul>-->
+
+            <div class="row">
+              <div class="col-12 border-bottom-1 p-t-30 p-b-20"><span class="pull-left f-w-600">UserID:</span> <span class="pull-right"><%= @user.id %></span>
+              </div>
+              <div class="col-12 border-bottom-1 p-t-30 p-b-20"><span class="pull-left f-w-600">Name:</span> <span class="pull-right"><%= @user.name %></span>
+              </div>
+              <div class="col-12 border-bottom-1 p-t-30 p-b-20"><span class="pull-left f-w-600">Email:</span> <span class="pull-right"><%= @user.email %></span>
+              </div>
+              <div class="col-12 border-bottom-1 p-t-30 p-b-20"><span class="pull-left f-w-600">Post/bookmark&nbsp;</span> <span class="pull-right"><%= link_to "Click here" , bookmarks_user_path(@user), class: "btn btn-sm btn-dark" %></span>
+              </div>
+              <div class="col-12 border-bottom-1 p-t-30 p-b-20"><span class="pull-left f-w-600">Follow/Follower&nbsp;</span> <span class="pull-right"><%= link_to "Click here" , bookmarks_user_path(@user), class: "btn btn-sm btn-dark" %></span>
+              </div>
+              <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Chat room&nbsp;</span> <span class="pull-right"><%= link_to "chat", mychat_user_path(@user), class: "btn btn-sm btn-dark" %></span>
+              </div>
+              <div class="under">
+                  <% if @user.name != "guestuser" %>
+                    <%= link_to 'Edit', mypage_edit_path, class: "btn btn-sm btn-outline-dark" %>
+                  <% end %>
+                  <% if @user.name != "guestuser" %>
+                    <%= link_to "退会する" , unsubscribe_path, class: 'btn btn-sm btn-outline-dark' %>
+                  <% end %>
+                  <%= render 'layouts/back' %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
 
 
 

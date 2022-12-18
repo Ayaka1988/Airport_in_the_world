@@ -1,24 +1,23 @@
   <div class="container-fluid">
     <div class="row">
-
       <div class="col-md-3 col-sm-4 col-xs-12 mt-5 ml-2 mr-5">
         <!--画像-->
-        <div class="img mb-10">
-          <% if @post.image.attached? %>
-            <%= link_to @post.image, "data-lightbox": @post.image do %>
-              <%= image_tag @post.image, size: "360x270" %>
+          <div class="img mb-10">
+            <% if @post.image.attached? %>
+              <%= link_to @post.image, "data-lightbox": @post.image do %>
+                <%= image_tag @post.image, size: "360x270" %>
+              <% end %>
+            <% else %>
+             <%= image_tag asset_path('no.jpg'), size: "200x120" %>
             <% end %>
-          <% else %>
-           <%= image_tag asset_path('no.jpg'), size: "200x120" %>
-          <% end %>
-        </div>
+          </div>
 
         <!--以下地図-->
         <div id="googlemap"></div>
         <div class="map-btn">
           <!-- 地名入力用のinputを追加 -->
           <input id="address" type="textbox" value="<%= @post.airport_name %>">
-          <!-- buttonをクリックしたらcodeAddressを実行　-->
+          <!-- buttonをクリックしたらcodeAddressを実行-->
           <input type="button" button class="btn btn-outline-dark btn-sm" value="Research" onclick="codeAddress()">
         </div>
         <script>
@@ -57,10 +56,10 @@
             // geocodingしたあとmapを移動
             geocoder.geocode( { 'address': inputAddress}, function(results, status) {
               if (status == 'OK') {
-          　　　　　　　　　　　　// map.setCenterで地図が移動
+                // map.setCenterで地図が移動
                 map.setCenter(results[0].geometry.location);
 
-          　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+                // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
                 var marker = new google.maps.Marker({
                     map: map,
                     position: results[0].geometry.location
@@ -77,6 +76,7 @@
 
       <!--空港情報-->
       <div class="col-md-6 col-sm-4 col-xs-12 mt-5 ml-2 text-center">
+
       <%= render 'public/shared/flash' %>
 
         <div class="table-responsive"><!--"info"-->
