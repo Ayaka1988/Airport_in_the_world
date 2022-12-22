@@ -17,7 +17,9 @@
  * require_tree .
  *= require_self
  */
-
+  .container-fluid {
+    over-flow: hidden;
+  }
 
   footer {
     // font-family: 'Train One', cursive;
@@ -131,19 +133,31 @@
   font-style: italic;
 }
 
+
 //topページ
+.map-container {
+  margin-left: 5%;
+}
+@media screen and (max-width: 480px) {
+  .map-container {
+     margin-left: 0;
+  }
+}
+
 .map {
-  background-image: image-url('map.jpg');
+  // background-image: image-url('map.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  width: 80%;
   height: 80vh;
   animation-name: mapAnime;
   animation-fill-mode:backwards;
   animation-duration:4s;
   animation-timing-function:ease;
 }
+
+
+
 
 @keyframes mapAnime{
   0% {
@@ -154,34 +168,60 @@
     opacity: 1;
   }
 }
+@media screen and (max-width: 480px) {
+  .map { height: 60vh;
+  }
+}
 
 .map h1{
   font-family: 'Oleo Script', cursive;
   font-size:clamp(55px,7.5vw,100px);
-  // position: absolute;
+  position: relative;
   // top: 18%;
   // left: 59%;
   // transform: translate(-50%, -50%);
-  width:80vw;
+  // width:80vw;
   text-align:center;
   letter-spacing: 0.04em;
   color: #000033;
 }
-@media screen and (max-width: 480px) {
-  .map h1 {
 
+.topimg {
+  width: 70vw;
+  margin-top: -8%;
+}
+
+@media screen and (max-width: 480px) {
+  .topimg { width: 90vw;
   }
 }
 
-.map h2{
-  position: absolute;
-  top: 73%;
-  left: 44%;
+.issp {
+  display: none;
+}
+@media screen and (max-width: 480px) {
+  .issp{
+    display: block;
+  }
+}
+
+.sub {
+  // position: absolute;
+  // top: 73%;
+  // left: 44%;
   font-size:clamp(43px,7.0vw,52px);
   font-family: 'Kaisei Tokumin', serif;
   font-style: italic;
   color: #000033;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -13%;
 }
+
+
 
 .poster {
   font-family: 'Oleo Script', cursive;
