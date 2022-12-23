@@ -2,12 +2,12 @@
     <div class="editmy pt-10 text-center">
       <h3 class="editmy pt-10 text-center">︎<strong>Edit your informatio︎︎n</strong></h3>
       <%= form_with model: @user,url: user_mypage_path, method: :patch, local:true do |f| %>
-      <table class="table table-hover">
+        <table class="table table-hover">
         <tr>
           <th><%= f.label :"User name" %></th>
           <td><%= f.text_field :name, autofocus: true ,class: "form-control name" %></td>
         </tr>
-        <!--<table class="table table-hover">-->
+        <table class="table table-hover">
         <tr>
           <th><%= f.label :"Mailaddress" %></th>
           <td><%= f.email_field :email,autofocus: true, class: "form-control email" %></td>

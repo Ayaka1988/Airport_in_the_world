@@ -17,6 +17,7 @@
  * require_tree .
  *= require_self
  */
+ //全体のcoutainer//
   .container-fluid {
     over-flow: hidden;
   }
@@ -45,11 +46,22 @@
     margin-left: auto;
   }
 
-
   table.table th {
     white-space:nowrap;
  }
+ //部分テンプレート//
+ @media screen and (max-width: 480px) {
+  .genreform {
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    margin-bottom: 10%;
+    text-align: -webkit-center;
+  }
+ }
+  //部分テンプレート終了//
 
+
+ //以下コメント//
   .comment-list {
     // position: relative;
     padding: 0.5em 1em;
@@ -64,7 +76,9 @@
     margin: 0;
     padding: 0;
   }
+  //コメント終了//
 
+  //ページネーション//
   .pagination {
     justify-content: center;
     color: #000080;
@@ -83,8 +97,9 @@
 .pagination>li>a:hover {
   border-radius: 15px;
 }
+//ページネーション終了//
 
-
+//aboutページ//
 .about-page{
   background-image: image-url('airport.jpg');
   // font-family: 'cursive','fantasy','Courier','Georgia','メイリオ', sans-serif;
@@ -103,7 +118,6 @@
      }
   }
 
-
 .about-page h1 {
   color: #FFF;
   text-shadow: #333 1px 0 10px;
@@ -118,7 +132,7 @@
 }
 
 @media screen and (min-width:480px) {
-  .about-page h1 .pcdn{
+  .about-page h1 .pcdn {
     display:none;
   }
 }
@@ -132,9 +146,9 @@
   font-family: 'Kaisei Tokumin', serif;
   font-style: italic;
 }
+//aboutページ終了//
 
-
-//topページ
+//topページ//
 .map-container {
   margin-left: 5%;
 }
@@ -156,9 +170,6 @@
   animation-timing-function:ease;
 }
 
-
-
-
 @keyframes mapAnime{
   0% {
     opacity: 0;
@@ -177,10 +188,6 @@
   font-family: 'Oleo Script', cursive;
   font-size:clamp(55px,7.5vw,100px);
   position: relative;
-  // top: 18%;
-  // left: 59%;
-  // transform: translate(-50%, -50%);
-  // width:80vw;
   text-align:center;
   letter-spacing: 0.04em;
   color: #000033;
@@ -206,9 +213,6 @@
 }
 
 .sub {
-  // position: absolute;
-  // top: 73%;
-  // left: 44%;
   font-size:clamp(43px,7.0vw,52px);
   font-family: 'Kaisei Tokumin', serif;
   font-style: italic;
@@ -220,9 +224,26 @@
   justify-content: flex-end;
   margin-top: -13%;
 }
+//topページ終了//
 
+//country//
+.d-flex {
+  margin-top: 4%;
+}
+.country-genre {
+  margin-right : 5%;
+}
+@media screen and (max-width: 480px) {
+  .country {
+    text-align: center;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    display: inline-table;
+  }
+}
+//countryページ終了//
 
-
+//posterページ//
 .poster {
   font-family: 'Oleo Script', cursive;
   font-size: 27px;
@@ -243,7 +264,10 @@
 .poster .noimg {
   margin-top: 40px;
 }
+//posterページ終了//
 
+
+//mypage & edit//
 .mypage {
   font-family: 'Oleo Script', cursive;
   font-size: 27px;
@@ -285,7 +309,9 @@
 .editpage h3 {
   font-size: 40px;
 }
+//mypage & edit終了//
 
+//postlink & genre//
 .postlink {
   font-family: 'Oleo Script', cursive;
   margin-left: 0%;
@@ -304,11 +330,13 @@
   font-family: 'Oleo Script', cursive;
   font-size: 25px;
 }
+//postlink & genre終了//
 
 .comments {
   font-family: 'Oleo Script', cursive;
 }
 
+//contact//
 .contact{
   background-image: image-url('sky.jpg');
   background-repeat: no-repeat;
@@ -337,6 +365,9 @@
   font-size: 22px;
 }
 
+//contact終了//
+
+//others//
 .flashmassege {
   font-size: 30px;
   font-family: 'Oleo Script', cursive;
