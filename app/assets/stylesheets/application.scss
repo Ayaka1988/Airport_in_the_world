@@ -237,12 +237,14 @@
   }
   //topページ終了//
 
+  //投稿ページ//
   .post-container {
     padding-top: 5%;
     padding-bottom: 5%;
     padding-left: 5%;
     padding-right: 5%;
   }
+  //投稿ページ終了//
 
 
   //countryページ//
@@ -265,7 +267,6 @@
       display: inline-table;
     }
   }
-
   //serchページ終了//
 
   //posterページ//
@@ -355,32 +356,25 @@
 
 
   //contactページ//
-  .contact{
-    background-image: image-url('sky.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: auto;
-    height: 90vh;
+  .contact-container {
     font-family: 'Oleo Script', cursive;
     color: #000033;
-    padding-top: 8%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 25px;
   }
-
-  .contact .table {
-      width: 50%;
-      color: #000033;
-      margin: 0 auto 1rem;
-      font-size: 30px;
-      color: #000033;
-  }
-  .contact h3 {
-    font-size: 40px;
+  // .contact .table {
+  //     width: 50%;
+  //     color: #000033;
+  //     margin: 0 auto 1rem;
+  //     font-size: 30px;
+  //     color: #000033;
+  // }
+  .contactnew {
+    font-size: 50px;
     margin-bottom: -20px;
-  }
-
-  .contact .btn {
-    color: #000033;
-    font-size: 22px;
   }
   //contactページ終了//
 

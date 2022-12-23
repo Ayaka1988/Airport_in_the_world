@@ -1,26 +1,25 @@
   <div class="editpage">
     <div class="editmy pt-10 text-center">
-      <h3 class="editmy pt-10 text-center">︎<strong>Edit your informatio︎︎n</strong></h3>
+      <h3 class="editmy pt-10">︎<strong>Edit your informatio︎︎n</strong></h3>
       <%= form_with model: @user,url: user_mypage_path, method: :patch, local:true do |f| %>
         <table class="table table-hover">
-        <tr>
-          <th><%= f.label :"User name" %></th>
-          <td><%= f.text_field :name, autofocus: true ,class: "form-control name" %></td>
-        </tr>
-        <table class="table table-hover">
-        <tr>
-          <th><%= f.label :"Mailaddress" %></th>
-          <td><%= f.email_field :email,autofocus: true, class: "form-control email" %></td>
-        </tr>
-        <tr class="myimg">
-          <th><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></th>
-          <td></td>
-        </tr>
-        <tr class="button">
-          <th><%= f.submit "Save", class: 'btn btn-dark btn-lg' %></th>
-          <th><%= render 'layouts/back' %></th>
-        </tr>
-      </table>
+          <tr>
+            <th><%= f.label :"User name" %></th>
+            <th><%= f.text_field :name, autofocus: true ,class: "form-control name" %></th>
+          </tr>
+          <tr>
+            <th><%= f.label :"Mailaddress" %></th>
+            <th><%= f.email_field :email,autofocus: true, class: "form-control email" %></th>
+          </tr>
+          <tr class="myimg">
+            <th><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></th>
+            <th></th>
+          </tr>
+          <tr class="button">
+            <th><%= f.submit "Save", class: 'btn btn-dark btn-lg' %></th>
+            <th><%= render 'layouts/back' %></th>
+          </tr>
+        </table>
       <% end %>
     </div>
   </div>
