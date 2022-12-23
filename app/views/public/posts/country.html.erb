@@ -1,64 +1,56 @@
   <div class="container-fluid">
     <div class="d-flex flex-sm-row flex-column-reverse">
-        <div class="country-genre col-md-3">
-          <%= render 'public/genres/genre', genres: @genres %>
-          <br>
-          <br>
-          <%= render 'public/posts/postlink' %>
-        </div>
+      <div class="left-bar col-md-3">
+        <%= render 'public/genres/genre', genres: @genres %>
+        <br>
+        <br>
+        <%= render 'public/posts/postlink' %>
+      </div>
 
-        <div class="country col-md-8">
-        <!--<div class="col-md-8 mt-5">-->
-          <h4><%= @genre.name %>の空港&ensp;<i class="fas fa-plane"></i></h4>
-          <!--<table class="table table-hover table-inverse">-->
-            <table class="table table-hover">
-              <% @posts.each do |post| %>
-              <tr>
-                <td class="table-img">
-                  <% if post.image.attached? %>
-                    <%= link_to post_path(post) do %>
-                    <%= image_tag post.image, size: "200x120" %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to post_path(post) do %>
-                    <%= image_tag asset_path('no.jpg'), size: "200x120" %>
-                    <% end %>
-                  <% end %>
-                </td>
-                <td class="table-txt">
-                  空港名：
+      <div class="country col-md-8">
+        <h4><%= @genre.name %>の空港&ensp;<i class="fas fa-plane"></i></h4>
+          <table class="table table-hover">
+            <% @posts.each do |post| %>
+            <tr>
+              <td class="table-img">
+                <% if post.image.attached? %>
                   <%= link_to post_path(post) do %>
-                  <%= post.airport_name %>
-                  <% end %><br>
-                  <br>
-                  エリア：<%= post.genre.parent.name %>&emsp;✈&emsp;<%= post.genre.name %><br>
-                  <br>
-                  ユーザー名：<%= post.user.name %>
-                </td>
-                <td>
-                  コメント&ensp;<i class="fas fa-comment-dots"></i>&ensp;<%= link_to "#{post.comments.count}", post_path(post.id) %><br>
-                  <br>
-                  Bookmark&ensp;<i class="fas fa-bookmark"></i>&ensp;<%= link_to "#{post.bookmarks.count}", post_path(post.id) %>
-                </td>
-              </tr>
-              <% end %>
-            </table>
-            <div class="back text-left mb-3">
-              <%= render 'layouts/back' %>
-            </div>
+                  <%= image_tag post.image, size: "200x120" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_path(post) do %>
+                  <%= image_tag asset_path('no.jpg'), size: "200x120" %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td class="table-txt">
+                空港名：
+                <%= link_to post_path(post) do %>
+                <%= post.airport_name %>
+                <% end %><br>
+                <br>
+                エリア：<%= post.genre.parent.name %>&emsp;✈&emsp;<%= post.genre.name %><br>
+                <br>
+                ユーザー名：<%= post.user.name %>
+              </td>
+              <td>
+                コメント&ensp;<i class="fas fa-comment-dots"></i>&ensp;<%= link_to "#{post.comments.count}", post_path(post.id) %><br>
+                <br>
+                Bookmark&ensp;<i class="fas fa-bookmark"></i>&ensp;<%= link_to "#{post.bookmarks.count}", post_path(post.id) %>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+          <div class="back text-left mb-3">
+            <%= render 'layouts/back' %>
           </div>
-        <%= paginate @posts %>
-        </div>
+      </div>
+    <%= paginate @posts %>
     </div>
   </div>
 
   <style>
-      @media (max-width: 487px) {
-      col-md-8 {
-        text-align: center;
-        margin: 0 auto;
-        display: inline-table;
-      }
+    @media (max-width: 487px) {
       table {
         width: 100%;
         display: contents;
@@ -72,3 +64,4 @@
       }
     }
   </style>
+

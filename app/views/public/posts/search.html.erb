@@ -1,15 +1,15 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3 mt-4 mr-5">
-      <%= render 'public/genres/genre', genres: @genres %>
-      <br>
-      <br>
-      <%= render 'public/posts/postlink' %>
-    </div>
+  <div class="container-fluid">
+    <div class="d-flex flex-sm-row flex-column-reverse">
+      <div class="left-bar col-md-3">
+        <%= render 'public/genres/genre', genres: @genres %>
+        <br>
+        <br>
+        <%= render 'public/posts/postlink' %>
+      </div>
 
-    <div class="col-md-8 mt-5">
-      <table class="table table-hover table-inverse">
-        <tbody>
+      <div class="search col-md-8">
+        <!--<table class="table table-hover table-inverse">-->
+        <table class="table table-hover">
           <% @posts.each do |post| %>
             <tr>
               <td>
@@ -40,10 +40,27 @@
               </td>
             </tr>
           <% end %>
-        </tbody>
-      </table>
-      <%= render 'layouts/back' %>
-      <%= paginate @posts %>
+        </table>
+        <div class="back text-left mb-3">
+          <%= render 'layouts/back' %>
+        </div>
+      </div>
+    <%= paginate @posts %>
     </div>
   </div>
-</div>
+
+  <style>
+    @media (max-width: 487px) {
+      table {
+        width: 100%;
+        display: contents;
+      }
+       td {
+        display: block;
+        width: 100%;
+
+       col-md-8 {
+        display: contents;
+      }
+    }
+  </style>

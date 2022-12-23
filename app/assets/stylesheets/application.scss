@@ -48,20 +48,30 @@
 
   table.table th {
     white-space:nowrap;
- }
- //部分テンプレート//
- @media screen and (max-width: 480px) {
-  .genreform {
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    margin-bottom: 10%;
-    text-align: -webkit-center;
   }
- }
+
+  .d-flex {
+  margin-top: 4%;
+  }
+  .left-bar {
+    margin-right : 4%;
+  }
+
+
+ //部分テンプレート//
+  @media screen and (max-width: 480px) {
+    .genreform {
+      margin-left: 0 auto;
+      margin-right: 0 auto;
+      margin-bottom: 10%;
+      margin-top: 10%;
+      text-align: -webkit-center;
+    }
+  }
   //部分テンプレート終了//
 
 
- //以下コメント//
+  //以下コメント//
   .comment-list {
     // position: relative;
     padding: 0.5em 1em;
@@ -71,315 +81,322 @@
     border-top: solid 5px #5d627b;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
   }
-
   .comments .comment{
     margin: 0;
     padding: 0;
   }
+  .comments {
+  font-family: 'Oleo Script', cursive;
+  }
   //コメント終了//
+
 
   //ページネーション//
   .pagination {
     justify-content: center;
     color: #000080;
- }
-
+  }
   .pagination>li>a {
     border: none;
     color: #000080;
-}
-
-.pagination>.active>a {
-  background: #93c9ff;
-  border-radius: 15px;
-}
-
-.pagination>li>a:hover {
-  border-radius: 15px;
-}
-//ページネーション終了//
-
-//aboutページ//
-.about-page{
-  background-image: image-url('airport.jpg');
-  // font-family: 'cursive','fantasy','Courier','Georgia','メイリオ', sans-serif;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  position: relative;
-  animation: about-page-anim 2.0s;
-}
-@keyframes about-page-anim {
-   0%{
-       width: 0%;
-     }
-   100%{
-       width: 100%;
-     }
+  }
+  .pagination>.active>a {
+    background: #93c9ff;
+    border-radius: 15px;
   }
 
-.about-page h1 {
-  color: #FFF;
-  text-shadow: #333 1px 0 10px;
-  font-family: 'Playball', cursive;
-  font-size:clamp(45px,7.5vw,98px);
-  position: absolute;
-  top: 22%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width:100vw;
-  text-align:center;
-}
-
-@media screen and (min-width:480px) {
-  .about-page h1 .pcdn {
-    display:none;
+  .pagination>li>a:hover {
+    border-radius: 15px;
   }
-}
+  //ページネーション終了//
 
-.about-text h2 {
-  color: #FFF;
-  position: absolute;
-  top: 78%;
-  left: 30%;
-  font-size:clamp(43px,7.0vw,40px);
-  font-family: 'Kaisei Tokumin', serif;
-  font-style: italic;
-}
-//aboutページ終了//
 
-//topページ//
-.map-container {
-  margin-left: 5%;
-}
-@media screen and (max-width: 480px) {
+  //aboutページ//
+  .about-page{
+    background-image: image-url('airport.jpg');
+    // font-family: 'cursive','fantasy','Courier','Georgia','メイリオ', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    animation: about-page-anim 2.0s;
+  }
+  @keyframes about-page-anim {
+     0%{
+         width: 0%;
+       }
+     100%{
+         width: 100%;
+       }
+  }
+
+  .about-page h1 {
+    color: #FFF;
+    text-shadow: #333 1px 0 10px;
+    font-family: 'Playball', cursive;
+    font-size:clamp(45px,7.5vw,98px);
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:100vw;
+    text-align:center;
+  }
+
+  @media screen and (min-width:480px) {
+    .about-page h1 .pcdn {
+      display:none;
+    }
+  }
+
+  .about-text h2 {
+    color: #FFF;
+    position: absolute;
+    top: 78%;
+    left: 30%;
+    font-size:clamp(43px,7.0vw,40px);
+    font-family: 'Kaisei Tokumin', serif;
+    font-style: italic;
+  }
+  //aboutページ終了//
+
+
+  //topページ//
   .map-container {
-     margin-left: 0;
+    margin-left: 5%;
   }
-}
-
-.map {
-  // background-image: image-url('map.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  height: 80vh;
-  animation-name: mapAnime;
-  animation-fill-mode:backwards;
-  animation-duration:4s;
-  animation-timing-function:ease;
-}
-
-@keyframes mapAnime{
-  0% {
-    opacity: 0;
+  @media screen and (max-width: 480px) {
+    .map-container {
+       margin-left: 0;
+    }
   }
 
-  100% {
-    opacity: 1;
+  .map {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 80vh;
+    animation-name: mapAnime;
+    animation-fill-mode:backwards;
+    animation-duration:4s;
+    animation-timing-function:ease;
   }
-}
-@media screen and (max-width: 480px) {
-  .map { height: 60vh;
+
+  @keyframes mapAnime{
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
-}
-
-.map h1{
-  font-family: 'Oleo Script', cursive;
-  font-size:clamp(55px,7.5vw,100px);
-  position: relative;
-  text-align:center;
-  letter-spacing: 0.04em;
-  color: #000033;
-}
-
-.topimg {
-  width: 70vw;
-  margin-top: -8%;
-}
-
-@media screen and (max-width: 480px) {
-  .topimg { width: 90vw;
+  @media screen and (max-width: 480px) {
+    .map { height: 60vh;
+    }
   }
-}
 
-.issp {
-  display: none;
-}
-@media screen and (max-width: 480px) {
-  .issp{
-    display: block;
+  .map h1{
+    font-family: 'Oleo Script', cursive;
+    font-size:clamp(55px,7.5vw,100px);
+    position: relative;
+    text-align:center;
+    letter-spacing: 0.04em;
+    color: #000033;
   }
-}
 
-.sub {
-  font-size:clamp(43px,7.0vw,52px);
-  font-family: 'Kaisei Tokumin', serif;
-  font-style: italic;
-  color: #000033;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: -13%;
-}
-//topページ終了//
-
-//country//
-.d-flex {
-  margin-top: 4%;
-}
-.country-genre {
-  margin-right : 5%;
-}
-@media screen and (max-width: 480px) {
-  .country {
-    text-align: center;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    display: inline-table;
+  .topimg {
+    width: 70vw;
+    margin-top: -8%;
   }
-}
-//countryページ終了//
 
-//posterページ//
-.poster {
-  font-family: 'Oleo Script', cursive;
-  font-size: 27px;
-}
+  @media screen and (max-width: 480px) {
+    .topimg { width: 90vw;
+    }
+  }
 
-.poster .pt-10 {
-  padding-top: 13px;
-}
-.poster .under {
-  margin: 0 auto;
-  padding-top: 40px;
-}
-.poster h3 {
-  font-size: 40px;
-  padding-bottom: 20px;
+  .issp {
+    display: none;
+  }
+  @media screen and (max-width: 480px) {
+    .issp{
+      display: block;
+    }
+  }
 
-}
-.poster .noimg {
-  margin-top: 40px;
-}
-//posterページ終了//
+  .sub {
+    font-size:clamp(43px,7.0vw,52px);
+    font-family: 'Kaisei Tokumin', serif;
+    font-style: italic;
+    color: #000033;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -13%;
+  }
+  //topページ終了//
+
+  .post-container {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
 
 
-//mypage & edit//
-.mypage {
-  font-family: 'Oleo Script', cursive;
-  font-size: 27px;
-}
+  //countryページ//
+  @media screen and (max-width: 480px) {
+    .country {
+      text-align: center;
+      margin-left: 0 auto;
+      margin-right: 0 auto;
+      display: inline-table;
+    }
+  }
+  //countryページ終了//
 
-.mypage .under {
-  margin: 0 auto;
-  padding-top: 40px;
-}
+  //serchページ//
+  @media screen and (max-width: 480px) {
+    .search {
+      text-align: center;
+      margin-left: 0 auto;
+      margin-right: 0 auto;
+      display: inline-table;
+    }
+  }
 
-.mypage h3 {
-  font-size: 50px;
-  padding-bottom: 10px;
-}
+  //serchページ終了//
 
-.mypage .noimg {
-  margin-top: 40px;
-}
+  //posterページ//
+  .poster {
+    font-family: 'Oleo Script', cursive;
+    font-size: 27px;
+  }
 
-.editpage {
-  font-family: 'Oleo Script', cursive;
-  font-size: 30px;
-}
+  .poster .pt-10 {
+    padding-top: 13px;
+  }
+  .poster .under {
+    margin: 0 auto;
+    padding-top: 40px;
+  }
+  .poster h3 {
+    font-size: 40px;
+    padding-bottom: 20px;
 
- .editpage .table {
+  }
+  .poster .noimg {
+    margin-top: 40px;
+  }
+  //posterページ終了//
+
+
+  //mypage & edit//
+  .mypage {
+    font-family: 'Oleo Script', cursive;
+    font-size: 27px;
+    padding-bottom: 5%;
+  }
+  .mypage .under {
+    margin: 0 auto;
+    padding-top: 40px;
+  }
+  .mypage h3 {
+    font-size: 50px;
+    padding-bottom: 10px;
+  }
+  .mypage .noimg {
+    margin-top: 40px;
+  }
+
+  .editpage {
+    font-family: 'Oleo Script', cursive;
+    font-size: 30px;
+    padding-bottom: 5%;
+  }
+  .editpage .table {
     width: 50%;
     color: #212529;
     margin: 0 auto 1rem;
-}
+  }
+  .editpage .myimg {
+    font-size: 20px;
+  }
+  .editpage .pt-10 {
+    padding-top: 6%;
+  }
+  .editpage h3 {
+    font-size: 40px;
+  }
+  //mypage & edit終了//
 
-.editpage .myimg {
-  font-size: 20px;
-}
 
-.editpage .pt-10 {
-  padding-top: 6%;
-}
+  //postlink & genre//
+  .postlink {
+    font-family: 'Oleo Script', cursive;
+    margin-left: 0%;
+    margin-top: -28px;
+    text-align:center;
+  }
+  .postlink p {
+    font-size: 20px;
+  }
+  .posts p {
+    font-size: 16px;
+  }
 
-.editpage h3 {
-  font-size: 40px;
-}
-//mypage & edit終了//
+  .genreform {
+    padding-top: 5%;
+    font-family: 'Oleo Script', cursive;
+    font-size: 25px;
+  }
+  //postlink & genre終了//
 
-//postlink & genre//
-.postlink {
-  font-family: 'Oleo Script', cursive;
-  margin-left: 0%;
-  margin-top: -28px;
-  text-align:center;
-}
-.postlink p {
-  font-size: 20px;
-}
-.posts p {
-  font-size: 16px;
-}
 
-.genreform {
-  padding-top: 5%;
-  font-family: 'Oleo Script', cursive;
-  font-size: 25px;
-}
-//postlink & genre終了//
-
-.comments {
-  font-family: 'Oleo Script', cursive;
-}
-
-//contact//
-.contact{
-  background-image: image-url('sky.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: auto;
-  height: 90vh;
-  font-family: 'Oleo Script', cursive;
-  color: #000033;
-  padding-top: 8%;
-}
-
-.contact .table {
-    width: 50%;
+  //contactページ//
+  .contact{
+    background-image: image-url('sky.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+    height: 90vh;
+    font-family: 'Oleo Script', cursive;
     color: #000033;
-    margin: 0 auto 1rem;
+    padding-top: 8%;
+  }
+
+  .contact .table {
+      width: 50%;
+      color: #000033;
+      margin: 0 auto 1rem;
+      font-size: 30px;
+      color: #000033;
+  }
+  .contact h3 {
+    font-size: 40px;
+    margin-bottom: -20px;
+  }
+
+  .contact .btn {
+    color: #000033;
+    font-size: 22px;
+  }
+  //contactページ終了//
+
+  //others//
+  .flashmassege {
     font-size: 30px;
-    color: #000033;
-}
-.contact h3 {
-  font-size: 40px;
-  margin-bottom: -20px;
-}
+    font-family: 'Oleo Script', cursive;
+    color : #000080;
+  }
 
-.contact .btn {
-  color: #000033;
-  font-size: 22px;
-}
+  #googlemap {
+    height: 350px;
+    width: 350px;
+    margin-top: 40px;
+  }
 
-//contact終了//
-
-//others//
-.flashmassege {
-  font-size: 30px;
-  font-family: 'Oleo Script', cursive;
-  color : #000080;
-}
-
-#googlemap {
-  height: 350px;
-  width: 350px;
-  margin-top: 40px;
-}
-
-.map-btn {
-  margin-top: 15px;
-}
+  .map-btn {
+    margin-top: 15px;
+  }
