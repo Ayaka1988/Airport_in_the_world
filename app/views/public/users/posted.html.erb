@@ -1,10 +1,16 @@
- <div class="container">
-    <div class="row">
-      <div class="col-md-10 mt-5">
+  <div class="container-fluid">
+    <div class="d-flex flex-sm-row flex-column-reverse">
+      <div class="left-bar col-md-3">
+        <%= render 'public/genres/genre', genres: @genres %>
+        <br>
+        <br>
+        <%= render 'public/posts/postlink' %>
+      </div>
 
+      <div class="country col-md-8">
         <h4><i class="fas fa-file-alt"></i>&ensp;投稿一覧</h4>
         <% @posted.each do |post| %>
-        <table class="table table-hover table-inverse">
+        <table class="table table-hover">
           <tr>
             <td class="table-img">
               <% if post.image.attached? %>
@@ -22,16 +28,34 @@
               <%= link_to post_path(post) do %>
               <%= post.airport_name %>
               <% end %><br>
+              <br>
               カントリー : <%= post.genre.name %><br>
+              <br>
               ユーザー名：<%= post.user.name %>
             </td>
           </tr>
         </table>
         <% end %>
         <div class="back mr-4">
-        <%= render 'layouts/back' %>
+          <%= render 'layouts/back' %>
         </div>
-        
       </div>
+    <%= paginate @posts %>
     </div>
   </div>
+
+  <style>
+    @media (max-width: 487px) {
+      table {
+        width: 100%;
+        display: contents;
+      }
+       td {
+        display: block;
+        width: 100%;
+
+       col-md-8 {
+        display: contents;
+      }
+    }
+  </style>

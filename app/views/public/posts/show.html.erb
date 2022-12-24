@@ -1,179 +1,193 @@
-  <div class="container-fluid">
+
+  <div class="post-container-fluid">
     <div class="row">
-      <div class="col-md-3 col-sm-4 col-xs-12 mt-5 ml-2 mr-5">
+      <div class="sidebar col-md-4">
         <!--画像-->
-          <div class="img mb-10">
-            <% if @post.image.attached? %>
-              <%= link_to @post.image, "data-lightbox": @post.image do %>
-                <%= image_tag @post.image, size: "360x270" %>
-              <% end %>
-            <% else %>
-             <%= image_tag asset_path('no.jpg'), size: "200x120" %>
+        <div class="img mb-10">
+          <% if @post.image.attached? %>
+            <%= link_to @post.image, "data-lightbox": @post.image do %>
+              <%= image_tag @post.image, size: "350x300" %>
             <% end %>
-          </div>
+          <% else %>
+           <%= image_tag asset_path('no.jpg'), size: "200x120" %>
+          <% end %>
+        </div>
 
         <!--以下地図-->
         <div id="googlemap"></div>
         <div class="map-btn">
-          <!-- 地名入力用のinputを追加 -->
+        <!-- 地名入力用のinputを追加 -->
           <input id="address" type="textbox" value="<%= @post.airport_name %>">
           <!-- buttonをクリックしたらcodeAddressを実行-->
           <input type="button" button class="btn btn-outline-dark btn-sm" value="Research" onclick="codeAddress()">
         </div>
-        <script>
-          let map
-          let geocoder
 
-          function initMap(){
-            geocoder = new google.maps.Geocoder()
-            if(!navigator.geolocation) {
-              alert('Geolocation APIに対応していません');
-              return false;
-            }
-            navigator.geolocation.getCurrentPosition(function(position) {
-              latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      <script>
+        let map
+        let geocoder
 
-              map = new google.maps.Map(document.getElementById('googlemap'), {
-                center: latLng,
-                zoom: 8,
-              });
-              // console.log(latLng);
-              marker = new google.maps.Marker({
-                position:  latLng,
-                map: map
-              });
-
-              }, function() {
-                alert('位置情報取得に失敗しました');
-              });
+        function initMap(){
+          geocoder = new google.maps.Geocoder()
+          if(!navigator.geolocation) {
+            alert('Geolocation APIに対応していません');
+            return false;
           }
+          navigator.geolocation.getCurrentPosition(function(position) {
+            latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-
-          function codeAddress(){
-            // 入力を取得
-            let inputAddress = document.getElementById('address').value;
-
-            // geocodingしたあとmapを移動
-            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-              if (status == 'OK') {
-                // map.setCenterで地図が移動
-                map.setCenter(results[0].geometry.location);
-
-                // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
-                });
-              } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-              }
+            map = new google.maps.Map(document.getElementById('googlemap'), {
+              center: latLng,
+              zoom: 8,
             });
-          }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&callback=initMap" async defer></script>
+            // console.log(latLng);
+            marker = new google.maps.Marker({
+              position:  latLng,
+              map: map
+            });
+
+            }, function() {
+              alert('位置情報取得に失敗しました');
+            });
+        }
+
+
+        function codeAddress(){
+          // 入力を取得
+          let inputAddress = document.getElementById('address').value;
+
+          // geocodingしたあとmapを移動
+          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+            if (status == 'OK') {
+              // map.setCenterで地図が移動
+              map.setCenter(results[0].geometry.location);
+
+              // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+              var marker = new google.maps.Marker({
+                  map: map,
+                  position: results[0].geometry.location
+              });
+            } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+            }
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&callback=initMap" async defer></script>
       </div>
 
 
       <!--空港情報-->
-      <div class="col-md-6 col-sm-4 col-xs-12 mt-5 ml-2 text-center">
-
       <%= render 'public/shared/flash' %>
-
-        <div class="table-responsive"><!--"info"-->
-          <table class="table">
-            <thead class="thead-dark">
-            <tr>
-              <th scope="row"><i class="fas fa-info-circle fa-lg"></i>︎</th>
-              <th scope="row">Airport information</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">空港名</th>
-              <td scope="col"><%= @post.airport_name %></td>
-            </tr>
-            <tr>
-              <th scope="row">エリア</th>
-              <td scope="col"><%= @post.genre.parent.name %>&emsp;✈&emsp;<%= @post.genre.name %></td>
-            </tr>
-            <tr>
-              <th scope="row">営業時間</th>
-              <td scope="col"><%= safe_join(@post.open_hour.split("\n"),tag(:br)) %></td>
-            </tr>
-            <tr>
-              <th scope="row">仮眠<br>スペース</th>
-              <td scope="col"><%= safe_join(@post.sleep_space.split("\n"),tag(:br)) %></td>
-            </tr>
-            <tr>
-              <th scope="row">治安</th>
-              <td scope="col"><%= safe_join(@post.security.split("\n"),tag(:br)) %></td>
-            </tr>
-            <tr>
-              <th scope="row">Wi-Fi</th>
-              <td scope="col"><%= safe_join(@post.wifi.split("\n"),tag(:br)) %></td>
-            </tr>
-            <tr>
-              <th scope="row">URL</th>
-              <td scope="col">
-                <% if @post.url.nil? %>
-                  <%= @post.url %>
-                <% else %>
-                  <%= Rinku.auto_link(@post.url, :all, 'target="_blank"').html_safe %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">市内までのアクセス</th>
-              <td scope="col"><%= safe_join(@post.access.split("\n"),tag(:br)) %></td>
-            </tr>
-            <tr>
-              <th scope="row">その他</th>
-              <td scope="col"><%= safe_join(@post.others.split("\n"),tag(:br)) %></td>
-            </tr>
-            <tr>
-              <th scope="row">ユーザー</th>
-              <td scope="col">
-                <% if @user != current_user %>
-                  <%=link_to poster_path(@user.id) do  %>
-                  <%= @post.user.name %>
-                  <% end %>
-                <% end %>
-                <% if @user == current_user %>
-                  <%= @post.user.name %>
-                <% end %>
-                <br>
-                <%= l @post.created_at %>
-              </td>
-            </tr>
-            <tr>
-              <% if @post.user == current_user %>
-              <th scope="row"></th>
-              <td scope="col">
-                <%= link_to "投稿を編集", edit_post_path, class:"btn btn-info" %>&nbsp;&emsp;<i class="fas fa-globe fa-lg"></i>&emsp;
-                <%= link_to "投稿を削除", post_path(@post.id), class:"btn btn-outline-dark", method: :delete, "data-confirm" => "本当に削除しますか？" %>
-              </td>
-              <% end %>
-              </tr>
-            </tbody>
-          </table>
-          <div class="back text-left mb-3">
-          <%= render 'layouts/back' %>
-          <%= link_to "NEW", new_post_path, class: "btn btn-outline-dark btn-sm" %>
-          <%= link_to "TOP", root_path, class: "btn btn-outline-dark btn-sm" %>
+      <div class="col-md-8">
+        <div class="information">
+          <div class="information-body">
+            <div class="mb-10" style="color: naby;">
+              <div id="bookmarks_buttons_<%= @post.id %>">
+              <%= render "public/bookmarks/bookmarks", post: @post %>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th class="sl"></i>︎</th>
+                    <th scope="col"><i class="fas fa-info-circle fa-lg"></i>&emsp;Airport information</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>空港名</th>
+                    <td class="post-table"><%= @post.airport_name %></td>
+                  </tr>
+                  <tr>
+                    <th>エリア</th>
+                    <td class="post-table"><%= @post.genre.parent.name %>&emsp;✈&emsp;<%= @post.genre.name %></td>
+                  </tr>
+                  <tr>
+                    <th>営業時間</th>
+                    <td class="post-table"><%= safe_join(@post.open_hour.split("\n"),tag(:br)) %></td>
+                  </tr>
+                  <tr>
+                    <th>仮眠スペース</th>
+                    <td class="post-table"><%= safe_join(@post.sleep_space.split("\n"),tag(:br)) %></td>
+                  </tr>
+                  <tr>
+                    <th>治安</th>
+                    <td class="post-table"><%= safe_join(@post.security.split("\n"),tag(:br)) %></td>
+                  </tr>
+                  <tr>
+                    <th>Wi-Fi</th>
+                    <td class="post-table"><%= safe_join(@post.wifi.split("\n"),tag(:br)) %></td>
+                  </tr>
+                  <tr>
+                    <th>URL</th>
+                    <td class="post-table">
+                      <% if @post.url.nil? %>
+                        <%= @post.url %>
+                      <% else %>
+                        <%= Rinku.auto_link(@post.url, :all, 'target="_blank"').html_safe %>
+                      <% end %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>市内までのアクセス</th>
+                    <td class="post-table"><%= safe_join(@post.access.split("\n"),tag(:br)) %></td>
+                  </tr>
+                  <tr>
+                    <th>その他</th>
+                    <td class="post-table"><%= safe_join(@post.others.split("\n"),tag(:br)) %></td>
+                  </tr>
+                  <tr>
+                    <th>ユーザー</th>
+                    <td class="post-table">
+                      <% if @user != current_user %>
+                        <%=link_to poster_path(@user.id) do  %>
+                        <%= @post.user.name %>
+                        <% end %>
+                      <% end %>
+                      <% if @user == current_user %>
+                        <%= @post.user.name %>
+                      <% end %>
+                      <br>
+                      <%= l @post.created_at %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <% if @post.user == current_user %>
+                    <th></th>
+                    <td class="post-table">
+                      <%= link_to "投稿を編集", edit_post_path, class:"btn btn-info" %>&nbsp;&emsp;<i class="fas fa-globe fa-lg"></i>&emsp;
+                      <%= link_to "投稿を削除", post_path(@post.id), class:"btn btn-outline-dark", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                    </td>
+                    <% end %>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <div class="back text-left mb-3">
+              <%= render 'layouts/back' %>
+              <%= link_to "NEW", new_post_path, class: "btn btn-outline-dark btn-sm" %>
+              <%= link_to "TOP", root_path, class: "btn btn-outline-dark btn-sm" %>
+            </div>
           </div>
         </div>
-      </div>
+      <!--</div>-->
 
+      <style>
+        @media (max-width: 487px) {
+          table {
+            width: 100%;
+            display: contents;
+          }
+           td,th {
+            display: block;
+            width: 100%;
+          }
+        }
+      </style>
 
-      <div class="col-md-2 col-sm-4 col-xs-12 mt-5 ml-4 text-center">
-        <div class="mb-10" style="color: naby;">
-          <div id="bookmarks_buttons_<%= @post.id %>">
-          <%= render "public/bookmarks/bookmarks", post: @post %>
-          </div>
-        </div>
-        <br>
-        <br>
-        <div >
+        <div class="comment-form">
           <h5 class style="comment">コメント件数：<%= @post.comments.count %></h5>
           <br>
           <!--部分テンプレート：コメントフォーム-->

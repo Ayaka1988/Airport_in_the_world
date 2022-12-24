@@ -76,7 +76,6 @@ class Public::PostsController < ApplicationController
   end
 
   def search
-    # @posts = Post.where(airport_name: params[:airport_name])
     @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(10)
     @genres = Genre.find_by(ancestry: nil).children
   end

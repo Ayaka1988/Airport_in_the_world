@@ -40,11 +40,14 @@ class Public::UsersController < ApplicationController
     bookmarks = Bookmark.where(user_id: @user.id).pluck(:post_id)
     @bookmark_posts = Post.where(id: bookmarks).page(params[:page]).per(5)
     @posts = Post.includes(:user).where(user_id: current_user.id).page(params[:page]).per(5)
+    @genres = Genre.find_by(ancestry: nil).children
   end
 
   def posted
     @user = User.find(params[:id])
     @posted = Post.includes(:user).where(user_id:params[:id]).page(params[:page]).per(5)
+    @genres = Genre.find_by(ancestry: nil).children
+    @posts = Post.includes(:user).where(user_id: current_user.id).page(params[:page]).per(5)
   end
 
   def mychat

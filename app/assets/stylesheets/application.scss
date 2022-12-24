@@ -237,6 +237,47 @@
   }
   //topページ終了//
 
+
+  //投稿詳細ページ//
+  .post-container-fluid {
+    margin-top: 5%;
+    margin-left: 4%;
+    margin-right: 4%;
+  }
+
+  .post-table {
+    text-align: center;
+  }
+  @media screen and (max-width: 480px) {
+    .post-table {
+      text-align: left;
+    }
+  }
+  .mb-10 {
+    font-family: 'Oleo Script', cursive;
+  }
+  @media screen and (max-width: 480px) {
+    .mb-10 {
+      margin-top: 8%;
+      margin-bottom: 5%;
+      font-family: 'Oleo Script', cursive;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .sl {
+    display: none;
+    margin-top: 10px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .sidebar {
+      margin-left: 4%;
+    }
+  }
+
+ //投稿詳細ページ終了//
+
+
   //投稿ページ//
   .post-container {
     padding-top: 5%;
@@ -342,15 +383,18 @@
   }
   .postlink p {
     font-size: 20px;
+    color: #000033;
   }
   .posts p {
     font-size: 16px;
+    color: #000033;
   }
 
   .genreform {
     padding-top: 5%;
     font-family: 'Oleo Script', cursive;
     font-size: 25px;
+    color: #000033;
   }
   //postlink & genre終了//
 
