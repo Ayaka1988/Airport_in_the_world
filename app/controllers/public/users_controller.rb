@@ -43,6 +43,14 @@ class Public::UsersController < ApplicationController
     @genres = Genre.find_by(ancestry: nil).children
   end
 
+  def followings
+    @users = @user.followings
+  end
+
+  def followers
+    @users = @user.followers
+  end
+
   def posted
     @user = User.find(params[:id])
     @posted = Post.includes(:user).where(user_id:params[:id]).page(params[:page]).per(5)
