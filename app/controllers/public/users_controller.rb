@@ -51,6 +51,11 @@ class Public::UsersController < ApplicationController
     @users = @user.followers
   end
 
+  def follow
+    # @users = @user.followings
+    # @users = @user.followers
+  end
+
   def posted
     @user = User.find(params[:id])
     @posted = Post.includes(:user).where(user_id:params[:id]).page(params[:page]).per(5)
