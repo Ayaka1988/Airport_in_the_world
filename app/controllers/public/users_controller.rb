@@ -1,7 +1,8 @@
 class Public::UsersController < ApplicationController
 
-  before_action :autheniticate_user, {only: [:edit, :update]}
+  before_action :autheniticate_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
+  before_action :set_user, only: [:followings, :followers]
 
   def index
     @users = User.all
@@ -44,16 +45,23 @@ class Public::UsersController < ApplicationController
   end
 
   def followings
+    user = User.find(params[:id])
     @users = @user.followings
   end
 
   def followers
-    @users = @user.followers
+    user = User.find(params[:id])
+    @users = user.followers
   end
 
   def follow
-    # @users = @user.followings
-    # @users = @user.followers
+    @user = User.find(params[:id])
+    @users = @user.followings or @user.followers
+
+    # followings = Following.where(user_id: @user.id)
+    # @following_users = User.where(id: users)
+
+
   end
 
   def posted
@@ -99,7 +107,9 @@ class Public::UsersController < ApplicationController
     end
   end
 
-
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:email, :name, :profile_image)

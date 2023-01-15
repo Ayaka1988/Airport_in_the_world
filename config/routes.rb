@@ -59,7 +59,7 @@ Rails.application.routes.draw do
       get :bookmarks
       get :posted
       get :mychat
-      get :follow
+      get :follow, :followings, :followers
       end
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'

@@ -1,12 +1,12 @@
   <div class="tabbox">
     <div class="tab02">
-      <input id="table01_01" type="radio" name="table01" class="tab_active" checked="checked" /><label class="tab_label" for="table01_01">following</label>
+      <input id="table01_01" type="radio" name="table01" class="tab_active" checked="checked" /><label class="tab_label" for="table01_01">followings</label>
       <div class="tab_content">
-        <%= render 'public/relationships/following', users: @users %>
+        <%= render 'public/users/followings', users: @users %>
       </div>
-      <input id="table01_02" type="radio" name="table01" class="tab_active" /><label class="tab_label" for="table01_02">follower</label>
+      <input id="table01_02" type="radio" name="table01" class="tab_active" /><label class="tab_label" for="table01_02">followers</label>
       <div class="tab_content">
-        <%= render 'public/relationships/follower', users: @users %>
+        <%#= render 'public/relationships/followers', user: @user %>
       </div>
     </div>
   </div>
