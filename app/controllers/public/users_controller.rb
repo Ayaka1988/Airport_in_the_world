@@ -56,7 +56,7 @@ class Public::UsersController < ApplicationController
 
   def follow
     @user = User.find(params[:id])
-    @users = @user.followings or @user.followers
+    @users == @user.followings || @users == @user.followers
 
     # followings = Following.where(user_id: @user.id)
     # @following_users = User.where(id: users)
